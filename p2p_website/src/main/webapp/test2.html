@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+<title>Bootstrap 101 Template</title>
+<!-- Bootstrap -->
+<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<script src="/js/jquery/jquery-2.1.3.min.js"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="/js/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
+<link href="/js/bootstrap-3.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<h1>你好，世界！</h1>
+	<div class="col-xs-1">上传进度：</div>
+	<div class="col-xs-4">
+		<div class="progress">
+			<div class="progress-bar" role="progressbar" aria-valuenow="60"
+				aria-valuemin="0" aria-valuemax="100" style="width: 60%;">60%</div>
+		</div>
+	</div>
+	<!-- Button trigger modal -->
+<button type="button" id="s" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+ 查询按钮
+</button>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">查询窗口</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+	function(){
+		$('#s').clik(function(){
+			$('#myModal').modal({
+				backdrop:"static"
+			}).modal('show');
+		});
+	};
+</script>
+	<!-- <script type="text/javascript">
+		$(function(){
+			var current = 0;
+			var timer = window.setInterval(function(){
+				current++;
+				if(current>=100){
+					window.clearInterval(timer);
+				}
+			$(".progress-bar").attr("style","width:"+current+"%;").html(current+"%");
+			},100);
+		});
+	</script> -->
+</body>
+</html>
