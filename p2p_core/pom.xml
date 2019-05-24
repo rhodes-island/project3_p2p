@@ -8,4 +8,14 @@
   </parent>
   <artifactId>p2p_core</artifactId>
   <name>p2p_core</name>
+  <build>
+    <resources>
+      <resource>
+        <directory>src/main/java</directory>
+        <includes>
+          <include>**/*.xml</include>
+        </includes>
+      </resource>
+    </resources>
+  </build>
 </project>
