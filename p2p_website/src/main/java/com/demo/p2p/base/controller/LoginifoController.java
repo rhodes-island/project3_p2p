@@ -51,6 +51,7 @@ public class LoginifoController {
 	
 	//用户登录验证
 	@RequestMapping("/login.do")
+	@ResponseBody
 	public JSONResult login(String username,String password) {
 		JSONResult json = new JSONResult();
 		// 有可能service抛出已经有这个用户的异常
