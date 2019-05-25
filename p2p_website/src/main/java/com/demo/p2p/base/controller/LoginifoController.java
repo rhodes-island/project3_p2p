@@ -12,11 +12,11 @@ import com.demo.p2p.base.util.JSONResult;
 
 @Controller
 public class LoginifoController {
-	
+
 	@Autowired
 	private LogininfoService logininfoService;
-	
-	//
+
+	//testDemo
 	@RequestMapping("showLogininfo")
 	public String selectByPrimaryKey(Model model) {
 		Logininfo selectByPrimaryKey = logininfoService.selectByPrimaryKey(10L);
@@ -25,20 +25,70 @@ public class LoginifoController {
 		return "showLogininfo";
 	}
 
+	// 用于检查username的ajax
+	@RequestMapping("checkUserName.do")
+	@ResponseBody
+	public Boolean checkUserName(String username) {
+
+		return !this.logininfoService.checkUserName(username);
+	}
+	
+	//用户名的检查和注册
 	@RequestMapping("register.do")
 	@ResponseBody
-	public JSONResult register(String username,String password) {
+	public JSONResult register(String username, String password) {
 		JSONResult json = new JSONResult();
-		//有可能service抛出已经有这个用户的异常
+		// 有可能service抛出已经有这个用户的异常
 		try {
 			logininfoService.selectByUnamePwd(username, password);
 		} catch (RuntimeException re) {
-			
+
 			json.setSuccess(false);
 			json.setMsg(re.getMessage());
 		}
 		return json;
 	}
 	
+	//用户登录验证
+	@RequestMapping("/login.do")
+	public JSONResult login(String username,String password) {
+		JSONResult json = new JSONResult();
+		// 有可能service抛出已经有这个用户的异常
+		try {
+			logininfoService.login(username,password);
+		} catch (RuntimeException re) {
+			json.setSuccess(false);
+			json.setMsg(re.getMessage());
+		}
+		return json;
+		
+	}
+	// 借贷项目
+
+	// 跳转个人中心
+	@RequestMapping("personal.do")
+	public String personal() {
+		System.out.println("跳转personal.ftl");
+		return "personal";
+	}
+
+	// realAuth
+	@RequestMapping("/realAuth.do")
+	public String realAuth() {
+		System.out.println("跳转realAuth.ftl");
+		return "realAuth";
+	}
+
+	// userFile
+	@RequestMapping("/userFile.do")
+	public String userFile() {
+		System.out.println("跳转userFile.ftl");
+		return "userFile";
+	}
+
+	@RequestMapping("bankInfo")
+	public String bankInfo() {
+		System.out.println("跳转bankInfo.ftl");
+		return "bankInfo";
+	}
 }
- 
