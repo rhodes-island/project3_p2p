@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.p2p.base.mapper.AccountMapper">
+  <resultMap id="BaseResultMap" type="com.demo.p2p.base.pojo.Account">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="tradePassword" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="usableAmount" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="freezedAmount" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="borrowLimitAmount" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="version" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="unReceiveInterest" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="unReceivePrincipal" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="unReturnAmount" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="remainBorrowLimit" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="standbyone" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="standbytwo" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="standbythree" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="standbyfour" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+    </constructor>
+  </resultMap>
+</mapper>

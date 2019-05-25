@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.p2p.base.mapper.RechargeofflineMapper">
+  <resultMap id="BaseResultMap" type="com.demo.p2p.base.pojo.Rechargeoffline">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="state" javaType="java.lang.Byte" jdbcType="TINYINT" />
+      <arg column="remark" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="auditTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="applyTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="auditor_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="applier_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="tradeCode" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="tradeTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="amount" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="note" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="bankinfo_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="standbyone" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="standbytwo" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="standbythree" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="standbyfour" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+    </constructor>
+  </resultMap>
+</mapper>

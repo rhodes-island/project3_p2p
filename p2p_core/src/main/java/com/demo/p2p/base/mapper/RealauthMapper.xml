@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.p2p.base.mapper.RealauthMapper">
+  <resultMap id="BaseResultMap" type="com.demo.p2p.base.pojo.Realauth">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="realname" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="sex" javaType="java.lang.Byte" jdbcType="TINYINT" />
+      <arg column="birthDate" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="idNumber" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="address" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="state" javaType="java.lang.Byte" jdbcType="TINYINT" />
+      <arg column="image1" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="image2" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="remark" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="auditTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="applyTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="auditor_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="applier_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="standbyone" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="standbytwo" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="standbythree" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="standbyfour" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+    </constructor>
+  </resultMap>
+</mapper>

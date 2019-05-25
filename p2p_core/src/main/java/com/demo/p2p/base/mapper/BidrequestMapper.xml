@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.p2p.base.mapper.BidrequestMapper">
+  <resultMap id="BaseResultMap" type="com.demo.p2p.base.pojo.Bidrequest">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="version" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="bidRequestType" javaType="java.lang.Byte" jdbcType="TINYINT" />
+      <arg column="bidRequestState" javaType="java.lang.Byte" jdbcType="TINYINT" />
+      <arg column="bidRequestAmount" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="currentRate" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="monthes2Return" javaType="java.lang.Byte" jdbcType="TINYINT" />
+      <arg column="bidCount" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="totalRewardAmount" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="currentSum" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="title" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="description" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="note" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="disableDate" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="createuser_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="disableDays" javaType="java.lang.Byte" jdbcType="TINYINT" />
+      <arg column="minBidAmount" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="applyTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="publishTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="standbyone" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="standbytwo" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="standbythree" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="standbyfour" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+    </constructor>
+  </resultMap>
+</mapper>

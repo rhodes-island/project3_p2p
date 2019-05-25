@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.p2p.base.mapper.PaymentscheduledetailMapper">
+  <resultMap id="BaseResultMap" type="com.demo.p2p.base.pojo.Paymentscheduledetail">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="bidamount" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="bid_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="totalamount" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="principal" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="interest" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="monthindex" javaType="java.lang.Byte" jdbcType="TINYINT" />
+      <arg column="deadline" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="bidrequest_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="paydate" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="returntype" javaType="java.lang.Byte" jdbcType="TINYINT" />
+      <arg column="paymentschedule_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="fromlogininfo_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="tologininfo_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="standbyone" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="standbytwo" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="standbythree" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="standbyfour" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+    </constructor>
+  </resultMap>
+</mapper>

@@ -14,7 +14,7 @@ import com.demo.p2p.base.service.LogininfoService;
 import com.demo.p2p.base.util.MD5;
 
 @Service
-public class LogioninfoServiceImpl implements LogininfoService {
+public class LogininfoServiceImpl implements LogininfoService {
 	@Autowired
 	private LogininfoMapper logininfoMapper;
 	@Autowired

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.p2p.base.mapper.UserinfoMapper">
+  <resultMap id="BaseResultMap" type="com.demo.p2p.base.pojo.Userinfo">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="version" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="bitState" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="realName" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="idNumber" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="phoneNumber" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="incomeGrade_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="marriage_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="kidCount_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="educationBackground_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="authScore" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="houseCondition_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="realauthid" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="email" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="standbyone" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="standbytwo" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="standbythree" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="standbyfour" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+    </constructor>
+  </resultMap>
+</mapper>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.p2p.base.mapper.CompanybankinfoMapper">
+  <resultMap id="BaseResultMap" type="com.demo.p2p.base.pojo.Companybankinfo">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="bankname" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="accountname" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="banknumber" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="bankforkname" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="standbyone" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="standbytwo" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="standbythree" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="standbyfour" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+    </constructor>
+  </resultMap>
+</mapper>
