@@ -19,6 +19,6 @@ public interface LogininfoService {
 
 	boolean checkUserName(String username);
 
-	void login(String username, String password);
+	void login(String username, String password,String usertype);
 	
 }

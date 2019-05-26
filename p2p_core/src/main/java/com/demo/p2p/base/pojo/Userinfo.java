@@ -6,9 +6,9 @@ import java.math.BigDecimal;
 public class Userinfo {
     private Long id;//用户信息表id
 
-    private Integer version;//版本
+    private Integer version;//版本号
 
-    private Long bitstate;//用户状态码
+    private Long bitstate  ;//用户状态码
 
     private String realname;//真名
 

@@ -13,9 +13,10 @@
     <result column="standbythree" jdbcType="BIGINT" property="standbythree" />
     <result column="standbyfour" jdbcType="DECIMAL" property="standbyfour" />
   </resultMap>
-	<insert id="insert" useGeneratedKeys="true" keyProperty="id" >
-    insert into `logininfo` (username, password, state,userType,admin,standbyone,standbytwo,standbythree,standbyfour)
-    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{state,jdbcType=TINYINT},#{userType,jdbcType=TINYINT},#{admin,jdbcType=TINYINT},#{standbyone,jdbcType=VARCHAR},#{standbytwo,jdbcType=VARCHAR},#{standbythree,jdbcType=VARCHAR},#{standbyfour,jdbcType=VARCHAR})
+  
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" >
+    insert into `logininfo` (username, password, state,usertype,admin)
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{state,jdbcType=TINYINT},#{usertype,jdbcType=TINYINT},#{admin,jdbcType=TINYINT})
   </insert>
   
   <update id="updateByPrimaryKey">
@@ -23,17 +24,13 @@
     set username = #{username,jdbcType=VARCHAR},
         password = #{password,jdbcType=VARCHAR},
         state = #{state,jdbcType=TINYINT},
-        userType = #{userType,jdbcType=TINYINT},
+        usertype = #{usertype,jdbcType=TINYINT},
         admin=#{admin,jdbcType=BIT},
-        standbyone = #{standbyone,jdbcType=VARCHAR},
-        standbytwo = #{standbyone,jdbcType=VARCHAR},
-        standbythree = #{standbytwo,jdbcType=BIGINT},
-        standbyfour = #{standbythree,jdbcType=DECIMAL}
     where id = #{id,jdbcType=BIGINT}
   </update>
   
   <sql id="base_column">
-  	id, username, password, state, userType,admin,standbyone,standbytwo,standbythree,standbyfour
+  	id, username, password, state, usertype,admin
   </sql>
   
   <select id="selectByPrimaryKey" resultMap="BaseResultMap">
@@ -54,10 +51,10 @@
   <select id="login" resultMap="BaseResultMap">
   	SELECT <include refid="base_column" />
   	FROM logininfo
-  	WHERE username = #{username} AND password = #{password} AND userType= #{userType}
+  	WHERE username = #{username} AND password = #{password} AND usertype = #{usertype}
   </select>
   
-  <select id="countByUserType" resultType="int">
-  	SELECT count(id) FROM logininfo WHERE userType = #{userType}
+  <select id="countByusertype" resultType="int">
+  	SELECT count(id) FROM logininfo WHERE usertype = #{usertype}
   </select>
 </mapper>

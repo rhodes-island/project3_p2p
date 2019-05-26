@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface LogininfoMapper {
-	int insert(Logininfo record);
+	int insert(Logininfo logininfo);
 
 	int updateByPrimaryKey(Logininfo record);
 
@@ -29,8 +29,7 @@ public interface LogininfoMapper {
 	 * @param encode
 	 * @return
 	 */
-	Logininfo login(@Param("username") String username, @Param("password") String password,
-			@Param("userType") int userType);
+	Logininfo login(@Param("username") String username, @Param("password") String password,@Param("usertype") String usertype);
 
 	/**
 	 * 按照类型查询用户类型数量

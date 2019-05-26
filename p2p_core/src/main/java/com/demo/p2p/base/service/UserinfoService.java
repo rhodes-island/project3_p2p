@@ -11,5 +11,10 @@ import com.demo.p2p.base.pojo.Userinfo;
  *
  */
 public interface UserinfoService {
+	//乐观锁
 	void update(Userinfo userinfo);
+	//添加userinfo信息
+	void add(Userinfo userinfo);
+	
+	Userinfo get(Long id);
 }
