@@ -15,7 +15,7 @@
   </resultMap>
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id" >
     insert into `logininfo` (username, password, state,userType,admin,standbyone,standbytwo,standbythree,standbyfour)
-    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{state,jdbcType=TINYINT},#{userType,jdbcType=TINYINT},#{admin,jdbcType=TINYINT},#{standbyone,jdbcType=VARCHAR},#{standbytwo,jdbcType=VARCHAR},#{standbythree,jdbcType=varchar},#{standbyfour,jdbcType=varchar})
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{state,jdbcType=TINYINT},#{userType,jdbcType=TINYINT},#{admin,jdbcType=TINYINT},#{standbyone,jdbcType=VARCHAR},#{standbytwo,jdbcType=VARCHAR},#{standbythree,jdbcType=VARCHAR},#{standbyfour,jdbcType=VARCHAR})
   </insert>
   
   <update id="updateByPrimaryKey">
@@ -23,8 +23,8 @@
     set username = #{username,jdbcType=VARCHAR},
         password = #{password,jdbcType=VARCHAR},
         state = #{state,jdbcType=TINYINT},
-        userType = #{userType},
-        admin=#{admin},
+        userType = #{userType,jdbcType=TINYINT},
+        admin=#{admin,jdbcType=BIT},
         standbyone = #{standbyone,jdbcType=VARCHAR},
         standbytwo = #{standbyone,jdbcType=VARCHAR},
         standbythree = #{standbytwo,jdbcType=BIGINT},
@@ -36,13 +36,13 @@
   	id, username, password, state, userType,admin,standbyone,standbytwo,standbythree,standbyfour
   </sql>
   
-  <select id="selectByPrimaryKey" resultMap="baseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap">
     select <include refid="base_column" />
     from `logininfo`
     where id = #{id,jdbcType=BIGINT}
   </select>
   
-  <select id="selectAll" resultMap="baseResultMap" >
+  <select id="selectAll" resultMap="BaseResultMap" >
     select <include refid="base_column" />
     from `logininfo`
   </select>
@@ -51,7 +51,7 @@
   	SELECT count(0) FROM logininfo WHERE username = #{username}
   </select>
   
-  <select id="login" resultMap="baseResultMap">
+  <select id="login" resultMap="BaseResultMap">
   	SELECT <include refid="base_column" />
   	FROM logininfo
   	WHERE username = #{username} AND password = #{password} AND userType= #{userType}

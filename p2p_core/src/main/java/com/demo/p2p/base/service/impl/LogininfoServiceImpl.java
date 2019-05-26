@@ -1,7 +1,5 @@
 package com.demo.p2p.base.service.impl;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,7 +62,7 @@ public class LogininfoServiceImpl implements LogininfoService {
 			throw new RuntimeException("用户或密码错误");
 		}
 		//数据库进行对比
-		Logininfo logininfo = this.logininfoMapper.login(username, password, 1);
+		Logininfo logininfo = this.logininfoMapper.login(username, MD5.encode(password), 1);
 		
 		System.out.println(logininfo);
 		// 如果不等于空，将用户的信息存储到session里面

@@ -4,27 +4,27 @@
   <resultMap id="BaseResultMap" type="com.demo.p2p.base.pojo.Userinfo">
       <result column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
       <result column="version" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <result column="bitState" javaType="java.lang.Long" jdbcType="BIGINT" />
-      <result column="realName" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <result column="idNumber" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <result column="bitstate" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <result column="realname" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <result column="idnumber" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <result column="phonenumber" javaType="java.lang.String" jdbcType="VARCHAR" />
       <result column="email" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <result column="phoneNumber" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <result column="authauthScore" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <result column="standbyone" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <result column="standbytwo" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <result column="standbythree" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <result column="standbyfour" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <result column="authscore" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <result column="realauthid" javaType="java.lang.Long" jdbcType="BIGINT" />
-      <association property="incomeGrade" javaType="SystemDictionaryItem" column="incomeGrade_id" select="com.xmg.demo.base.mapper.SystemDictionaryItemMapper.selectByPrimaryKey" />
-      <association property="marriage" javaType="SystemDictionaryItem" column="marriage_id" select="com.demo.p2p.base.mapper.SystemDictionaryItemMapper.selectByPrimaryKey" />
-      <association property="kidCount" javaType="SystemDictionaryItem" column="kidCount_id" select="com.demo.p2p.base.mapper.SystemDictionaryItemMapper.selectByPrimaryKey" />
-      <association property="educationBackground" javaType="SystemDictionaryItem" column="educationBackground_id" select="com.demo.p2p.base.mapper.SystemDictionaryItemMapper.selectByPrimaryKey" />
-      <association property="houseCondition" javaType="SystemDictionaryItem" column="houseCondition_id" select="com.demo.p2p.base.mapper.SystemDictionaryItemMapper.selectByPrimaryKey" />
+      <association property="incomegradeId" javaType="com.demo.p2p.base.pojo.Systemdictionaryitem" column="incomeGrade_id" select="com.xmg.demo.base.mapper.SystemdictionaryitemMapper.selectByPrimaryKey" />
+      <association property="marriageId" javaType="com.demo.p2p.base.pojo.Systemdictionaryitem" column="marriage_id" select="com.demo.p2p.base.mapper.SystemdictionaryitemMapper.selectByPrimaryKey" />
+      <association property="kidcountId" javaType="com.demo.p2p.base.pojo.Systemdictionaryitem" column="kidCount_id" select="com.demo.p2p.base.mapper.SystemdictionaryitemMapper.selectByPrimaryKey" />
+      <association property="educationbackgroundId" javaType="com.demo.p2p.base.pojo.Systemdictionaryitem" column="educationBackground_id" select="com.demo.p2p.base.mapper.SystemdictionaryitemMapper.selectByPrimaryKey" />
+      <association property="houseconditionId" javaType="com.demo.p2p.base.pojo.Systemdictionaryitem" column="houseCondition_id" select="com.demo.p2p.base.mapper.SystemdictionaryitemMapper.selectByPrimaryKey" />
       <!-- <result column="incomeGrade_id" javaType="java.lang.Long" jdbcType="BIGINT" /> -->
       <!-- <result column="marriage_id" javaType="java.lang.Long" jdbcType="BIGINT" /> -->
      <!--  <result column="kidCount_id" javaType="java.lang.Long" jdbcType="BIGINT" /> -->
       <!-- <result column="educationBackground_id" javaType="java.lang.Long" jdbcType="BIGINT" /> -->
       <!-- <result column="houseCondition_id" javaType="java.lang.Long" jdbcType="BIGINT" /> -->
-      <result column="standbyone" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <result column="standbytwo" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <result column="standbythree" javaType="java.lang.Long" jdbcType="BIGINT" />
-      <result column="standbyfour" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
   </resultMap>
   
   <insert id="insert">

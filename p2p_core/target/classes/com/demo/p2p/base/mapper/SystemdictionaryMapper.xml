@@ -13,4 +13,37 @@
       <arg column="standbyfour" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
     </constructor>
   </resultMap>
+  
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" >
+    insert into `systemdictionary` (sn, title,intro,standbyone,standbytwo,standbythree)
+    values (#{id,jdbcType=BIGINT},#{sn,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR},#{intro,jdbcType=VARCHAR},#{standbyone,jdbcType=VARCHAR},#{standbytwo,jdbcType=VARCHAR},#{standbythree,jdbcType=BIGINT},#{standbyfour,jdbcType=DECIMAL}),
+  </insert>
+  
+  <update id="updateByPrimaryKey">
+    update `systemdictionary`
+    set sn = #{sn,jdbcType=VARCHAR},
+       title = #{title,jdbcType=VARCHAR},
+       intro = #{intro,jdbcType=VARCHAR},
+       standbyone = #{standbyone,jdbcType=VARCHAR},
+       standbytwo = #{standbyone,jdbcType=VARCHAR},
+       standbythree = #{standbytwo,jdbcType=BIGINT},
+       standbyfour = #{standbythree,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <sql id="base_column">
+  	id, sn, title,intro,standbyone,standbytwo,standbythree,standbyfour
+  </sql>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+    select <include refid="base_column" />
+    from `systemdictionary`
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select <include refid="base_column" />
+    from `systemdictionary`
+  </select>
+ 
 </mapper>
