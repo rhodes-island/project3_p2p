@@ -2,11 +2,11 @@ package com.demo.p2p.base.pojo;
 
 import java.math.BigDecimal;
 
-//数据字典分类表
+//数据字典表
 public class Systemdictionary {
     private Long id;//数据字典分类id
 
-    private String sn;//对应的的提交材料的
+    private String sn;//分类的编号
 
     private String title;//主题
 

@@ -2,7 +2,7 @@ package com.demo.p2p.base.pojo;
 
 import java.math.BigDecimal;
 
-//数据字典表
+//数据字典明细
 public class Systemdictionaryitem {
     private Long id;//数据字典id
 

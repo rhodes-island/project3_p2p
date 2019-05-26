@@ -2,27 +2,29 @@ package com.demo.p2p.base.pojo;
 
 import java.math.BigDecimal;
 
+import com.demo.p2p.base.util.BidConst;
+
 //账户表
 public class Account {
     private Long id;//账户id
 
     private String tradepassword;//交易密码
 
-    private BigDecimal usableamount;//账户可用余额
+    private BigDecimal usableamount = BidConst.ZERO;//账户可用余额
 
-    private BigDecimal freezedamount;//账户冻结金额
+    private BigDecimal freezedamount = BidConst.ZERO;//账户冻结金额
 
-    private BigDecimal borrowlimitamount;//最大借款数
+    private BigDecimal borrowlimitamount = BidConst.INIT_BORROW_LIMIT;//最大借款数
 
     private Integer version;//对象版本信息（用作乐观锁）
 
-    private BigDecimal unreceiveinterest;//账户待收利息
+    private BigDecimal unreceiveinterest = BidConst.ZERO;//账户待收利息
 
-    private BigDecimal unreceiveprincipal;//账户待收本金
+    private BigDecimal unreceiveprincipal = BidConst.ZERO;//账户待收本金
 
     private BigDecimal unreturnamount;//账户待还金额
 
-    private BigDecimal remainborrowlimit;//账户剩余授信额度
+    private BigDecimal remainborrowlimit = BidConst.INIT_BORROW_LIMIT;//账户剩余授信额度
 
     private String standbyone;//备用字段1
 
