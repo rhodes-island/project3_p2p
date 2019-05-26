@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.demo.p2p.base.mapper.LogininfoMapper;
 import com.demo.p2p.base.pojo.Logininfo;
-import com.demo.p2p.base.pojo.LogininfoExample;
 import com.demo.p2p.base.service.LogininfoService;
 import com.demo.p2p.base.util.MD5;
 
@@ -29,12 +28,9 @@ public class LogininfoServiceImpl implements LogininfoService {
 	@Override
 	public Logininfo selectByUnamePwd(String username, String password) {
 		// 判断用户名是否存在
-		LogininfoExample example = new LogininfoExample();
-		example.createCriteria().andUsernameEqualTo(username);
-		List<Logininfo> count = this.logininfoMapper.selectByExample(example);
-
+		int count = this.logininfoMapper.getCountByUsername(username);
 		// 如果不存在，设置并保存这个对象
-		if (count.size() <= 0) {
+		if (count <= 0) {
 			Logininfo li = new Logininfo();
 			li.setUsername(username);
 			li.setPassword(MD5.encode(password));
@@ -52,10 +48,9 @@ public class LogininfoServiceImpl implements LogininfoService {
 	// 如果不存在返回false
 	@Override
 	public boolean checkUserName(String username) {
-		LogininfoExample example = new LogininfoExample();
-		example.createCriteria().andUsernameEqualTo(username);
-		List<Logininfo> count = this.logininfoMapper.selectByExample(example);
-		return count.size() > 0;
+		int count = this.logininfoMapper.getCountByUsername(username);
+		
+		return count > 0;
 	}
 
 	@Override
@@ -68,16 +63,15 @@ public class LogininfoServiceImpl implements LogininfoService {
 		} catch (Exception e) {
 			throw new RuntimeException("用户或密码错误");
 		}
+		//数据库进行对比
+		Logininfo logininfo = this.logininfoMapper.login(username, password, 1);
 		
-		LogininfoExample example = new LogininfoExample();
-		example.createCriteria().andUsernameEqualTo(username).andPasswordEqualTo(MD5.encode(password));
-		List<Logininfo> list = this.logininfoMapper.selectByExample(example);
-		System.out.println(list);
+		System.out.println(logininfo);
 		// 如果不等于空，将用户的信息存储到session里面
 		// 否则，抛出异常
-		if (list.size() != 0) {
+		if (logininfo.getId() != null) {
 			// 将用户的信息存储到session里面
-			session.setAttribute("user", list);
+			session.setAttribute("user", logininfo);
 		} else {
 			// 抛出异常如果用户不存在
 			throw new RuntimeException("用户或密码错误！");

@@ -7,9 +7,10 @@ import com.demo.p2p.base.pojo.Account;
 public interface AccountMapper {
 	int insert(Account record);
 
+	int updateByPrimaryKey(Account record);
+	
 	Account selectByPrimaryKey(Long id);
 
-	int updateByPrimaryKey(Account record);
 	
 	List<Account> selectAll();
 }
