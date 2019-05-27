@@ -5,19 +5,22 @@ import java.util.Date;
 
 //ip日志表
 public class Iplog {
+	public static final int STATE_SUCCESS = 1;
+	public static final int STATE_FAIL = 0;
+	
     private Long id;//ip日志表id
 
     private String ip;//ip地址
+    
+    private Date logintime;//登陆时间
 
+	private String username;// 用户名
+	
     private Byte loginstate;//登录状态
-
-    private String username;//用户名
 
     private Long logininfoid;//登录信息id
 
     private Byte logintype;//登陆类型
-
-    private Date logintime;//登陆时间
 
     private String standbyone;//备用字段1
 

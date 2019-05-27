@@ -4,208 +4,193 @@ import java.math.BigDecimal;
 
 //用户信息表
 public class Userinfo {
-    private Long id;//用户信息表id
+	private Long id;// 用户信息表id
 
-    private Integer version;//版本号
+	private Integer version;// 版本号
 
-    private Long bitstate  ;//用户状态码
+	private Long bitstate;// 用户状态码
 
-    private String realname;//真名
+	private String realname;// 真名
 
-    private String idnumber;//身份证号码
+	private String idnumber;// 身份证号码
 
-    private String phonenumber;//电话号码
+	private String phonenumber;// 电话号码
 
-    private Long incomegradeId;//月收入
+	private Integer authscore;// 风控累计分数;
+	private String email;// 邮箱
+	private Long incomegradeId;// 月收入
 
-    private Long marriageId;//婚否
+	private Long marriageId;// 婚否
 
-    private Long kidcountId;//子女情况id
+	private Long kidcountId;// 子女情况id
 
-    private Long educationbackgroundId;//学历情况id
+	private Long educationbackgroundId;// 学历情况id
 
-    private Integer authscore;//风控累计分数;
+	private Long houseconditionId;// 住房条件id
 
-    private Long houseconditionId;//住房条件id
+	private Long realauthid;// 该用户对应的实名认证对象id
 
-    private Long realauthid;// 该用户对应的实名认证对象id
+	private String standbyone;// 备用字段1
 
-    private String email;//邮箱
+	private String standbytwo;// 备用字段2
 
-    private String standbyone;//备用字段1
+	private Long standbythree;// 备用字段3
 
-    private String standbytwo;//备用字段2
+	private BigDecimal standbyfour;// 备用字段4
 
-    private Long standbythree;//备用字段3
+	public Long getId() {
+		return id;
+	}
 
-    private BigDecimal standbyfour;//备用字段4
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public Userinfo(Long id, Integer version, Long bitstate, String realname, String idnumber, String phonenumber, Long incomegradeId, Long marriageId, Long kidcountId, Long educationbackgroundId, Integer authscore, Long houseconditionId, Long realauthid, String email, String standbyone, String standbytwo, Long standbythree, BigDecimal standbyfour) {
-        this.id = id;
-        this.version = version;
-        this.bitstate = bitstate;
-        this.realname = realname;
-        this.idnumber = idnumber;
-        this.phonenumber = phonenumber;
-        this.incomegradeId = incomegradeId;
-        this.marriageId = marriageId;
-        this.kidcountId = kidcountId;
-        this.educationbackgroundId = educationbackgroundId;
-        this.authscore = authscore;
-        this.houseconditionId = houseconditionId;
-        this.realauthid = realauthid;
-        this.email = email;
-        this.standbyone = standbyone;
-        this.standbytwo = standbytwo;
-        this.standbythree = standbythree;
-        this.standbyfour = standbyfour;
-    }
+	public Integer getVersion() {
+		return version;
+	}
 
-    public Userinfo() {
-        super();
-    }
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public Long getBitstate() {
+		return bitstate;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setBitstate(Long bitstate) {
+		this.bitstate = bitstate;
+	}
 
-    public Integer getVersion() {
-        return version;
-    }
+	public String getRealname() {
+		return realname;
+	}
 
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
+	public void setRealname(String realname) {
+		this.realname = realname;
+	}
 
-    public Long getBitstate() {
-        return bitstate;
-    }
+	public String getIdnumber() {
+		return idnumber;
+	}
 
-    public void setBitstate(Long bitstate) {
-        this.bitstate = bitstate;
-    }
+	public void setIdnumber(String idnumber) {
+		this.idnumber = idnumber;
+	}
 
-    public String getRealname() {
-        return realname;
-    }
+	public String getPhonenumber() {
+		return phonenumber;
+	}
 
-    public void setRealname(String realname) {
-        this.realname = realname == null ? null : realname.trim();
-    }
+	public void setPhonenumber(String phonenumber) {
+		this.phonenumber = phonenumber;
+	}
 
-    public String getIdnumber() {
-        return idnumber;
-    }
+	public Integer getAuthscore() {
+		return authscore;
+	}
 
-    public void setIdnumber(String idnumber) {
-        this.idnumber = idnumber == null ? null : idnumber.trim();
-    }
+	public void setAuthscore(Integer authscore) {
+		this.authscore = authscore;
+	}
 
-    public String getPhonenumber() {
-        return phonenumber;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber == null ? null : phonenumber.trim();
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public Long getIncomegradeId() {
-        return incomegradeId;
-    }
+	public Long getIncomegradeId() {
+		return incomegradeId;
+	}
 
-    public void setIncomegradeId(Long incomegradeId) {
-        this.incomegradeId = incomegradeId;
-    }
+	public void setIncomegradeId(Long incomegradeId) {
+		this.incomegradeId = incomegradeId;
+	}
 
-    public Long getMarriageId() {
-        return marriageId;
-    }
+	public Long getMarriageId() {
+		return marriageId;
+	}
 
-    public void setMarriageId(Long marriageId) {
-        this.marriageId = marriageId;
-    }
+	public void setMarriageId(Long marriageId) {
+		this.marriageId = marriageId;
+	}
 
-    public Long getKidcountId() {
-        return kidcountId;
-    }
+	public Long getKidcountId() {
+		return kidcountId;
+	}
 
-    public void setKidcountId(Long kidcountId) {
-        this.kidcountId = kidcountId;
-    }
+	public void setKidcountId(Long kidcountId) {
+		this.kidcountId = kidcountId;
+	}
 
-    public Long getEducationbackgroundId() {
-        return educationbackgroundId;
-    }
+	public Long getEducationbackgroundId() {
+		return educationbackgroundId;
+	}
 
-    public void setEducationbackgroundId(Long educationbackgroundId) {
-        this.educationbackgroundId = educationbackgroundId;
-    }
+	public void setEducationbackgroundId(Long educationbackgroundId) {
+		this.educationbackgroundId = educationbackgroundId;
+	}
 
-    public Integer getAuthscore() {
-        return authscore;
-    }
+	public Long getHouseconditionId() {
+		return houseconditionId;
+	}
 
-    public void setAuthscore(Integer authscore) {
-        this.authscore = authscore;
-    }
+	public void setHouseconditionId(Long houseconditionId) {
+		this.houseconditionId = houseconditionId;
+	}
 
-    public Long getHouseconditionId() {
-        return houseconditionId;
-    }
+	public Long getRealauthid() {
+		return realauthid;
+	}
 
-    public void setHouseconditionId(Long houseconditionId) {
-        this.houseconditionId = houseconditionId;
-    }
+	public void setRealauthid(Long realauthid) {
+		this.realauthid = realauthid;
+	}
 
-    public Long getRealauthid() {
-        return realauthid;
-    }
+	public String getStandbyone() {
+		return standbyone;
+	}
 
-    public void setRealauthid(Long realauthid) {
-        this.realauthid = realauthid;
-    }
+	public void setStandbyone(String standbyone) {
+		this.standbyone = standbyone;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public String getStandbytwo() {
+		return standbytwo;
+	}
 
-    public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
-    }
+	public void setStandbytwo(String standbytwo) {
+		this.standbytwo = standbytwo;
+	}
 
-    public String getStandbyone() {
-        return standbyone;
-    }
+	public Long getStandbythree() {
+		return standbythree;
+	}
 
-    public void setStandbyone(String standbyone) {
-        this.standbyone = standbyone == null ? null : standbyone.trim();
-    }
+	public void setStandbythree(Long standbythree) {
+		this.standbythree = standbythree;
+	}
 
-    public String getStandbytwo() {
-        return standbytwo;
-    }
+	public BigDecimal getStandbyfour() {
+		return standbyfour;
+	}
 
-    public void setStandbytwo(String standbytwo) {
-        this.standbytwo = standbytwo == null ? null : standbytwo.trim();
-    }
+	public void setStandbyfour(BigDecimal standbyfour) {
+		this.standbyfour = standbyfour;
+	}
 
-    public Long getStandbythree() {
-        return standbythree;
-    }
+	@Override
+	public String toString() {
+		return "Userinfo [id=" + id + ", version=" + version + ", bitstate=" + bitstate + ", realname=" + realname
+				+ ", idnumber=" + idnumber + ", phonenumber=" + phonenumber + ", authscore=" + authscore + ", email="
+				+ email + ", incomegradeId=" + incomegradeId + ", marriageId=" + marriageId + ", kidcountId="
+				+ kidcountId + ", educationbackgroundId=" + educationbackgroundId + ", houseconditionId="
+				+ houseconditionId + ", realauthid=" + realauthid + ", standbyone=" + standbyone + ", standbytwo="
+				+ standbytwo + ", standbythree=" + standbythree + ", standbyfour=" + standbyfour + "]";
+	}
 
-    public void setStandbythree(Long standbythree) {
-        this.standbythree = standbythree;
-    }
 
-    public BigDecimal getStandbyfour() {
-        return standbyfour;
-    }
-
-    public void setStandbyfour(BigDecimal standbyfour) {
-        this.standbyfour = standbyfour;
-    }
 }

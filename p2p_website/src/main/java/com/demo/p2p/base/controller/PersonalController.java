@@ -28,12 +28,13 @@ public class PersonalController {
 	@Autowired
 	private AccountService accountService;
 	
-	@RequestMapping("personal")
+	@RequestMapping("personal.do")
 	public String personalCenter(Model model,HttpSession session) {
 		//需要往model里面放前台所需要的信息
 		Logininfo logininfo = (Logininfo)session.getAttribute("user");
-		//model.addAttribute("userinfo", userinfoService.get(logininfo.getId()));
-		//model.addAttribute("account", accountService.get(logininfo.getId()));
+		model.addAttribute("userinfo", userinfoService.get(logininfo.getId()));
+		System.out.println(userinfoService.get(logininfo.getId()));
+		model.addAttribute("account", accountService.get(logininfo.getId()));
 		return "personal";
 	}
 }

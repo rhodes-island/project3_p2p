@@ -16,15 +16,15 @@
 		<!-- 网页顶部导航 -->
 		<#include "common/head-tpl.ftl" />
 		<!-- 网页导航 -->
-		
-		
+		<!-- 在当前的freemarker的上下文中,添加一个变量,变量的名字叫currentNav,变量的值叫personal -->
+		<#assign currentNav="personal">
 		<#include "common/navbar-tpl.ftl" />
 		
 		<div class="container">
 			<div class="row">
 				<!--导航菜单-->
 				<div class="col-sm-3">
-					
+					<#assign currentMenu="personal">
 					<#include "common/leftmenu-tpl.ftl" />
 				</div>
 				<!-- 功能页面 -->
@@ -48,25 +48,25 @@
 							
 							<div class="row h4 account-info">
 								<div class="col-sm-4">
-									账户总额：<span class="text-primary">元</span>
+									账户总额：<span class="text-primary">${account.totalAmount}元</span>
 								</div>
 								<div class="col-sm-4">
-									可用金额：<span class="text-primary">元</span>	
+									可用金额：<span class="text-primary">${account.usableamount}元</span>	
 								</div>
 								<div class="col-sm-4">
-									冻结金额：<span class="text-primary">元</span>
+									冻结金额：<span class="text-primary">${account.freezedamount}元</span>
 								</div>
 							</div>
 							
 							<div class="row h4 account-info">
 								<div class="col-sm-4">
-									待收利息：<span class="text-primary">元</span>
+									待收利息：<span class="text-primary">${account.unreceiveinterest}元</span>
 								</div>
 								<div class="col-sm-4">
-									待收本金：<span class="text-primary">元</span>	
+									待收本金：<span class="text-primary">${account.unreceiveprincipal}元</span>	
 								</div>
 								<div class="col-sm-4">
-									待还本息：<span class="text-primary">元</span>
+									待还本息：<span class="text-primary">${account.unreturnamount}元</span>
 								</div>
 							</div>
 							

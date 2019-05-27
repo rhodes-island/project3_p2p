@@ -16,8 +16,8 @@
     </constructor>
   </resultMap>
     <insert id="insert" useGeneratedKeys="true" keyProperty="id" >
-    insert into `systemdictionaryitem` (id,parentId, title, sequence,intro,standbyone,standbytwo,standbythree,standbyfour)
-    values (#{id,jdbcType=BIGINT},#{parentId,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{sequence,jdbcType=TINYINT},#{intro,jdbcType=VARCHAR},#{standbyone,jdbcType=VARCHAR},#{standbytwo,jdbcType=VARCHAR},#{standbythree,jdbcType=BIGINT},#{standbyfour,jdbcType=DECIMAL})
+    insert into `systemdictionaryitem` (id,parentId, title, sequence,intro)
+    values (#{id,jdbcType=BIGINT},#{parentId,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{sequence,jdbcType=TINYINT},#{intro,jdbcType=VARCHAR})
   </insert>
   
   <update id="updateByPrimaryKey">
@@ -26,15 +26,11 @@
       	title = #{title,jdbcType=VARCHAR},
       	sequence = #{sequence,jdbcType=TINYINT},
      	intro = #{intro,jdbcType=VARCHAR},
-        standbyone = #{standbyone,jdbcType=VARCHAR},
-        standbytwo = #{standbytwo,jdbcType=VARCHAR},
-        standbythree = #{standbythree,jdbcType=BIGINT},
-        standbyfour = #{standbyfour,jdbcType=DECIMAL}
     where id = #{id,jdbcType=BIGINT}
   </update>
   
   <sql id="base_column">
-  	id, parentId, title, sequence,intro,standbyone,standbytwo,standbythree,standbyfour
+  	id, parentId, title, sequence,intro
   </sql>
   
   <select id="selectByPrimaryKey" resultMap="BaseResultMap">

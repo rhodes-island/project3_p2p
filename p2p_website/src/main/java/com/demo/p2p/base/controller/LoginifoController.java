@@ -40,7 +40,7 @@ public class LoginifoController {
 		JSONResult json = new JSONResult();
 		// 有可能service抛出已经有这个用户的异常
 		try {
-			logininfoService.selectByUnamePwd(username, password);
+			logininfoService.insert(username, password);
 		} catch (RuntimeException re) {
 
 			json.setSuccess(false);
@@ -66,10 +66,5 @@ public class LoginifoController {
 		return json;
 	}
 	
-	@RequestMapping("/personal.do")
-	public String personal() {
-		
-		return "personal";
-	}
 	
 }

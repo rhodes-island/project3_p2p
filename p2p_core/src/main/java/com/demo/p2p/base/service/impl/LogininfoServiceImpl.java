@@ -36,7 +36,7 @@ public class LogininfoServiceImpl implements LogininfoService {
 	}
 
 	@Override
-	public Logininfo selectByUnamePwd(String username, String password) {
+	public int insert(String username, String password) {
 		// 判断用户名是否存在
 		int count = this.logininfoMapper.getCountByUsername(username);
 		// 如果不存在，设置并保存这个对象
@@ -48,19 +48,28 @@ public class LogininfoServiceImpl implements LogininfoService {
 			li.setUsertype(Logininfo.USER_CLIENT);
 			this.logininfoMapper.insert(li);
 			// 初始化账户信息和userinfo
+			try {
+				Account account = new Account();
+				account.setId(li.getId());
+				this.accountService.add(account);
+			} catch (RuntimeException e) {
+				e.printStackTrace();
+				throw e;
+			}
 			
-			Account account = new Account();
-			account.setId(li.getId());
-			this.accountService.add(account);
-			
-			Userinfo userinfo = new Userinfo();
-			userinfo.setId(li.getId());
-			this.userinfoService.add(userinfo);
+			try {
+				Userinfo userinfo = new Userinfo();
+				userinfo.setId(li.getId());
+				this.userinfoService.add(userinfo);
+			} catch (RuntimeException e) {
+				e.printStackTrace();
+				throw e;
+			}
 		} else {
 			// 如果存在，抛出错误
 			throw new RuntimeException("用户名已经存在！");
 		}
-		return null;
+		return 0;
 	}
 
 	// 判断用户名是否存在
@@ -80,7 +89,6 @@ public class LogininfoServiceImpl implements LogininfoService {
 			if (username.trim().equals("") || password.trim().equals("")) {
 				throw new RuntimeException("用户或密码错误");
 			}
-
 			// 数据库进行对比
 			Logininfo logininfo = this.logininfoMapper.login(username, MD5.encode(password), usertype);
 			//System.out.println(logininfo);
@@ -95,7 +103,7 @@ public class LogininfoServiceImpl implements LogininfoService {
 			}
 		} catch (Exception e) {
 			
-			throw new RuntimeException("用户或密码错误");
+			throw new RuntimeException("用户或密码错误!");
 		}
 	}
 

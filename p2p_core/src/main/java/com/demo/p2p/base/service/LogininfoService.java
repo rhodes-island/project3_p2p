@@ -15,10 +15,12 @@ public interface LogininfoService {
 
 	Logininfo selectByPrimaryKey(Long id);
 
-	Logininfo selectByUnamePwd(String username, String password);
+	int insert(String username, String password);
 
 	boolean checkUserName(String username);
 
 	void login(String username, String password,String usertype);
+	
+	
 	
 }

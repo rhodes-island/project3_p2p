@@ -22,7 +22,7 @@ public class Account {
 
     private BigDecimal unreceiveprincipal = BidConst.ZERO;//账户待收本金
 
-    private BigDecimal unreturnamount;//账户待还金额
+    private BigDecimal unreturnamount = BidConst.ZERO;//账户待还金额
 
     private BigDecimal remainborrowlimit = BidConst.INIT_BORROW_LIMIT;//账户剩余授信额度
 
@@ -33,6 +33,12 @@ public class Account {
     private Long standbythree;//备用字段3
 
     private BigDecimal standbyfour;//备用字段4
+    
+    //查询账户余额的方法
+    //账户可用余额+账户冻结金额+账户待收本金
+    public BigDecimal getTotalAmount() {
+    	return usableamount.add(this.freezedamount).add(this.unreturnamount);
+    }
 
     public Account(Long id, String tradepassword, BigDecimal usableamount, BigDecimal freezedamount, BigDecimal borrowlimitamount, Integer version, BigDecimal unreceiveinterest, BigDecimal unreceiveprincipal, BigDecimal unreturnamount, BigDecimal remainborrowlimit, String standbyone, String standbytwo, Long standbythree, BigDecimal standbyfour) {
         this.id = id;
