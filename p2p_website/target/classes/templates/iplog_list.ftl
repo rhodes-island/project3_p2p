@@ -100,6 +100,7 @@
 								</#list>
 							</tbody>
 						</table>
+						<!-- bootstrap提供的分页 -->
 						<div style="text-align: center;">
 							<ul id="pagination" class="pagination"></ul>
 						</div>

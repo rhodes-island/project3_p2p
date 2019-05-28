@@ -20,7 +20,7 @@ public interface LogininfoService {
 
 	boolean checkUserName(String username);
 
-	Logininfo login(String username, String password,String usertype,String request);
+	Logininfo login(String username, String password,int usertype,String request);
 	
 	
 	

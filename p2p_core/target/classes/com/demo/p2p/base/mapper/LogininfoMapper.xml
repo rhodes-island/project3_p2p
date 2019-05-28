@@ -8,10 +8,6 @@
     <result column="state" jdbcType="TINYINT" property="state" />
     <result column="usertype" jdbcType="TINYINT" property="usertype" />
     <result column="admin" jdbcType="BIT" property="admin" />
-    <result column="standbyone" jdbcType="VARCHAR" property="standbyone" />
-    <result column="standbytwo" jdbcType="VARCHAR" property="standbytwo" />
-    <result column="standbythree" jdbcType="BIGINT" property="standbythree" />
-    <result column="standbyfour" jdbcType="DECIMAL" property="standbyfour" />
   </resultMap>
   
   <insert id="insert" useGeneratedKeys="true" keyProperty="id" >

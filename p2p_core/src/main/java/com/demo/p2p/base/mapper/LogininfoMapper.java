@@ -29,7 +29,7 @@ public interface LogininfoMapper {
 	 * @param encode
 	 * @return
 	 */
-	Logininfo login(@Param("username") String username, @Param("password") String password,@Param("usertype") String usertype);
+	Logininfo login(@Param("username") String username, @Param("password") String password,@Param("usertype") int usertype);
 
 	/**
 	 * 按照类型查询用户类型数量

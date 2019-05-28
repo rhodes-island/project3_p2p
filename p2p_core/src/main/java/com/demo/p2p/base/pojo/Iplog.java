@@ -16,8 +16,8 @@ public class Iplog extends BasePojo {
     private Byte loginstate;//登录状态
 
     private Long logininfoid;//登录信息id
-
-    private Byte logintype;//登陆类型
+    
+    private int usertype;//用户类型
 
 	public String getIp() {
 		return ip;
@@ -59,22 +59,28 @@ public class Iplog extends BasePojo {
 		this.logininfoid = logininfoid;
 	}
 
-	public Byte getLogintype() {
-		return logintype;
+	public int getUsertype() {
+		return usertype;
 	}
 
-	public void setLogintype(Byte logintype) {
-		this.logintype = logintype;
+	public void setUsertype(int usertype) {
+		this.usertype = usertype;
 	}
 
+    
+	
 	@Override
 	public String toString() {
 		return "Iplog [ip=" + ip + ", logintime=" + logintime + ", username=" + username + ", loginstate=" + loginstate
-				+ ", logininfoid=" + logininfoid + ", logintype=" + logintype + ", id=" + id + "]";
+				+ ", logininfoid=" + logininfoid + ", usertype=" + usertype + "]";
 	}
-    
+
 	//返回状态的用户名
 	public String getLoginStateDisplay() {
 		return loginstate==STATE_SUCCESS?"登陆成功":"登陆失败";
+	}
+	
+	public String getUserTypeDisplay() {
+		return usertype==Logininfo.USER_CLIENT?"前端用户":"后台用户";
 	}
 }

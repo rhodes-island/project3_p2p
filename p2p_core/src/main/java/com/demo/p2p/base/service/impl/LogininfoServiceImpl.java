@@ -93,7 +93,7 @@ public class LogininfoServiceImpl implements LogininfoService {
 	}
 
 	@Override
-	public Logininfo login(String username, String password, String usertype, String ip) {
+	public Logininfo login(String username, String password, int usertype, String ip) {
 		/*// 首先判断用户名或密码是否为空
 		if (username.trim().equals("") || password.trim().equals("")) {
 			throw new RuntimeException("用户或密码错误");
@@ -103,8 +103,9 @@ public class LogininfoServiceImpl implements LogininfoService {
 		iplog.setIp(ip);
 		iplog.setLogintime(new Date());
 		iplog.setUsername(username);
+		iplog.setUsertype(usertype);
 		// 数据库进行对比
-		Logininfo logininfo = this.logininfoMapper.login(username, MD5.encode(password), usertype);
+		Logininfo logininfo = this.logininfoMapper.login(username, MD5.encode(password),usertype);
 
 		// 如果不等于空:登陆成功，将用户的信息存储到session里面
 		// 否则，抛出异常

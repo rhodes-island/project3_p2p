@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.demo.p2p.base.pojo.Logininfo;
 import com.demo.p2p.base.service.LogininfoService;
 import com.demo.p2p.base.util.JSONResult;
+import com.demo.p2p.base.util.UserContext;
 
 @Controller
 public class LoginifoController {
@@ -55,10 +56,10 @@ public class LoginifoController {
 	//如果是Json格式返回一定要加注解否则404
 	@RequestMapping("/login.do")
 	@ResponseBody
-	public JSONResult login(String username,String password,String usertype,HttpServletRequest request) {
+	public JSONResult login(String username,String password,HttpServletRequest request) {
 		JSONResult json = new JSONResult();
 		// 有可能service抛出已经有这个用户的异常
-			Logininfo current = logininfoService.login(username,password,usertype,request.getRemoteAddr());
+			Logininfo current = logininfoService.login(username,password,Logininfo.USER_CLIENT,request.getRemoteAddr());
 			if(current ==null) {
 			json.setSuccess(false);
 			json.setMsg("用户名或密码错误！");

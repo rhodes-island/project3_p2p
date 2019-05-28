@@ -8,17 +8,17 @@
       <result column="username" property="username" javaType="java.lang.String" jdbcType="VARCHAR" />
       <result column="loginTime" property="logintime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
       <result column="loginInfoId" property="logininfoid" javaType="java.lang.Long" jdbcType="BIGINT" />
-      <result column="loginType" property="logintype" javaType="java.lang.Byte" jdbcType="TINYINT" />
+      <result column="usertype" property="usertype"/>
   </resultMap>
    
   <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-    insert into `iplog` (ip, loginstate, userName, loginTime,logininfoid,loginType)
+    insert into `iplog` (ip, loginstate, userName, loginTime,logininfoid,usertype)
     values (#{ip,jdbcType=VARCHAR}, #{loginstate,jdbcType=TINYINT}, #{username,jdbcType=VARCHAR}, 
-      #{logintime,jdbcType=TIMESTAMP},#{logininfoid},1)
+      #{logintime,jdbcType=TIMESTAMP},#{logininfoid},#{usertype})
   </insert>
   
   <sql id="base_column">
-  	id, ip, loginState, userName, loginTime
+  	id, ip, loginState, userName, loginTime,logininfo,usertype
   </sql>
   <sql id="base_where">
   	<where>
