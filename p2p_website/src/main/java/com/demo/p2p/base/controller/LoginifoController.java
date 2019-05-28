@@ -1,5 +1,7 @@
 package com.demo.p2p.base.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -53,12 +55,11 @@ public class LoginifoController {
 	//如果是Json格式返回一定要加注解否则404
 	@RequestMapping("/login.do")
 	@ResponseBody
-	public JSONResult login(String username,String password,String usertype) {
+	public JSONResult login(String username,String password,String usertype,HttpServletRequest request) {
 		JSONResult json = new JSONResult();
 		// 有可能service抛出已经有这个用户的异常
 		try {
-			//System.out.println(usertype);
-			logininfoService.login(username,password,usertype);
+			logininfoService.login(username,password,usertype,request);
 		} catch (RuntimeException re) {
 			json.setSuccess(false);
 			json.setMsg(re.getMessage());

@@ -1,7 +1,6 @@
 package com.demo.p2p.base.mapper;
 
-import java.util.List;
-import java.util.Map;
+
 
 import com.demo.p2p.base.pojo.Userinfo;
 
@@ -11,5 +10,6 @@ public interface UserinfoMapper {
 	Userinfo selectByPrimaryKey(Long id);
 
 	int updateByPrimaryKey(Userinfo record);
+	
 
 }

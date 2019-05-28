@@ -21,7 +21,7 @@
 					信用贷</div>
 				<div class="el-borrow-item-content">
 					<p>
-						认证后可借金额 <i>¥ ${account.remainBorrowLimit}
+						认证后可借金额 <i>¥ ${account.remainborrowlimit}
 					</p>
 					<a href="#" class="text-primary">申请条件</a>
 					<p class="help-block">仅限广州地区</p>
@@ -43,7 +43,7 @@
 							</#if>
 						</li>
 						<li>
-							<#if (userinfo.authScore<creditBorrowScore)>
+							<#if (userinfo.authscore<creditBorrowScore)>
 								<a href="/userFile.do">材料认证分数达到${creditBorrowScore}分</a>
 								<span class="glyphicon glyphicon-remove" style="color:red;"></span>
 							<#else>
@@ -58,7 +58,8 @@
 							</#if>
 						</li>
 					</ul>
-					<#if userinfo.isBasicInfo && userinfo.isRealAuth && (userinfo.authScore >= creditBorrowScore) && userinfo.isVedioAuth>
+					<!--上面的条件成立才让申请-->
+					<#if userinfo.isBasicInfo && userinfo.isRealAuth && (userinfo.authscore >= creditBorrowScore) && userinfo.isVedioAuth>
 						<a href="/borrowInfo.do" class="el-borrow-apply">
 							申请贷款
 						</a>

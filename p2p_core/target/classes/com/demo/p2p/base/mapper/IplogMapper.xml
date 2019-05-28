@@ -2,18 +2,65 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.demo.p2p.base.mapper.IplogMapper">
   <resultMap id="BaseResultMap" type="com.demo.p2p.base.pojo.Iplog">
-    <constructor>
-      <idArg column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
-      <arg column="ip" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="loginState" javaType="java.lang.Byte" jdbcType="TINYINT" />
-      <arg column="username" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="loginInfoId" javaType="java.lang.Long" jdbcType="BIGINT" />
-      <arg column="loginType" javaType="java.lang.Byte" jdbcType="TINYINT" />
-      <arg column="loginTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-      <arg column="standbyone" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="standbytwo" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="standbythree" javaType="java.lang.Long" jdbcType="BIGINT" />
-      <arg column="standbyfour" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
-    </constructor>
+      <result column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <result column="ip" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <result column="loginState" javaType="java.lang.Byte" jdbcType="TINYINT" />
+      <result column="username" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <result column="loginTime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <result column="loginInfoId" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <result column="loginType" javaType="java.lang.Byte" jdbcType="TINYINT" />
+      <result column="standbyone" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <result column="standbytwo" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <result column="standbythree" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <result column="standbyfour" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
   </resultMap>
+   
+  <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+    insert into `iplog` (ip, loginstate, userName, loginTime,logininfoid,userType)
+    values (#{ip,jdbcType=VARCHAR}, #{loginstate,jdbcType=TINYINT}, #{userName,jdbcType=VARCHAR}, 
+      #{loginTime,jdbcType=TIMESTAMP},#{logininfoid},#{userType})
+  </insert>
+  
+  
+  <sql id="base_column">
+  	id, ip, loginState, userName, loginTime,userType
+  </sql>
+  <!-- 查询这个用户所有登录日志 -->
+  <select id="selectAll" resultType="com.demo.p2p.base.pojo.Iplog">
+  	select <include refid="base_column"/> 
+  	from iplog where username=#{username}
+  </select>
+  <sql id="base_where">
+  	<where>
+  		<if test="beginDate!=null">
+  			AND loginTime &gt;= #{beginDate}
+  		</if>
+  		<if test="endDate!=null">
+  			AND loginTime &lt;= #{endDate}
+  		</if>
+  		<if test="userType>-1">
+  			AND userType = #{userType}
+  		</if>
+  		<if test="state>-1">
+  			AND state = #{state}
+  		</if>
+  		<if test="username!=null">
+  			AND username = #{username}
+  		</if>
+  	</where>
+  </sql>
+  
+  <select id="queryForCount" resultType="int">
+  	SELECT count(id)
+  	FROM iplog
+  	<include refid="base_where" />
+  </select>
+  
+  <select id="query" resultMap="BaseResultMap">
+  	SELECT <include refid="base_column" />
+  	FROM iplog
+  	<include refid="base_where" />
+  	ORDER BY loginTime DESC
+  	LIMIT #{start},#{pageSize}
+  </select>
 </mapper>

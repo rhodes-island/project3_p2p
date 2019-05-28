@@ -5,8 +5,8 @@ import java.util.Date;
 
 //ip日志表
 public class Iplog {
-	public static final int STATE_SUCCESS = 1;
-	public static final int STATE_FAIL = 0;
+	public static final byte STATE_SUCCESS = 1;
+	public static final byte STATE_FAIL = 0;
 	
     private Long id;//ip日志表id
 

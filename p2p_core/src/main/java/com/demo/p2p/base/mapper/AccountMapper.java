@@ -13,4 +13,6 @@ public interface AccountMapper {
 
 	
 	List<Account> selectAll();
+
+	Account getCurrent(Long id);
 }

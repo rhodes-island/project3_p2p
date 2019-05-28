@@ -1,68 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.demo.p2p.base.mapper.UserinfoMapper">
-  <resultMap id="BaseResultMap" type="com.demo.p2p.base.pojo.Userinfo">
-      <result column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
-      <result column="version" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <result column="bitstate" javaType="java.lang.Long" jdbcType="BIGINT" />
-      <result column="realname" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <result column="idnumber" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <result column="phonenumber" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <result column="email" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <result column="standbyone" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <result column="standbytwo" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <result column="standbythree" javaType="java.lang.Long" jdbcType="BIGINT" />
-      <result column="standbyfour" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
-      <result column="authscore" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <result column="realauthid" javaType="java.lang.Long" jdbcType="BIGINT" />
-      <result column="incomegrade_id" javaType="java.lang.Long" jdbcType="BIGINT" />
-      <result column="marriage_id" javaType="java.lang.Long" jdbcType="BIGINT" />
-      <result column="kidcount_id" javaType="java.lang.Long" jdbcType="BIGINT" />
-      <result column="educationbackground_id" javaType="java.lang.Long" jdbcType="BIGINT" />
-      <result column="housecondition_id" javaType="java.lang.Long" jdbcType="BIGINT" />
-      <!-- <association property="incomegrade" javaType="com.demo.p2p.base.pojo.Systemdictionaryitem" column="incomeGrade_id" select="com.demo.demo.base.mapper.SystemdictionaryitemMapper.selectByPrimaryKey" />
-      <association property="marriage" javaType="com.demo.p2p.base.pojo.Systemdictionaryitem" column="marriage_id" select="com.demo.p2p.base.mapper.SystemdictionaryitemMapper.selectByPrimaryKey" />
-      <association property="kidcount" javaType="com.demo.p2p.base.pojo.Systemdictionaryitem" column="kidCount_id" select="com.demo.p2p.base.mapper.SystemdictionaryitemMapper.selectByPrimaryKey" />
-      <association property="educationbackground" javaType="com.demo.p2p.base.pojo.Systemdictionaryitem" column="educationBackground_id" select="com.demo.p2p.base.mapper.SystemdictionaryitemMapper.selectByPrimaryKey" />
-      <association property="housecondition" javaType="com.demo.p2p.base.pojo.SystemDictionaryItem" column="houseCondition_id" select="com.demo.p2p.base.mapper.SystemdictionaryitemMapper.selectByPrimaryKey" />
-  --> </resultMap>
+  <resultMap id="baseResultMap" type="com.demo.p2p.base.pojo.Userinfo">
+	 <!-- 这里如果不写property属性会找不到对应的值，从而 -->
+	 <result property="id" column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+	 <result property="version" column="version" javaType="java.lang.Integer" jdbcType="INTEGER" />
+	 <result property="bitstate" column="bitstate" javaType="java.lang.Long" jdbcType="BIGINT" />
+	 <result property="realname" column="realname" javaType="java.lang.String" jdbcType="VARCHAR" />
+	 <result property="idnumber" column="idnumber" javaType="java.lang.String" jdbcType="VARCHAR" />
+	 <result property="phonenumber" column="phonenumber" javaType="java.lang.String" jdbcType="VARCHAR" />
+	 <result property="email" column="email" javaType="java.lang.String" jdbcType="VARCHAR" />
+	 <result property="standbyone" column="standbyone" javaType="java.lang.String" jdbcType="VARCHAR" />
+	 <result property="standbytwo" column="standbytwo" javaType="java.lang.String" jdbcType="VARCHAR" />
+	 <result property="standbythree" column="standbythree" javaType="java.lang.Long" jdbcType="BIGINT" />
+	 <result property="standbyfour" column="standbyfour" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+	 <result property="authscore" column="authscore" javaType="java.lang.Integer" jdbcType="INTEGER" />
+	 <result property="realauthid" column="realauthid" javaType="java.lang.Long" jdbcType="BIGINT" />
+	<!--  <result column="incomegrade_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+	<result column="marriage_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+	<result column="kidcount_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+	<result column="educationbackground_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+	<result column="housecondition_id" javaType="java.lang.Long" jdbcType="BIGINT" /> -->
+	<association property="incomegrade" javaType="com.demo.p2p.base.pojo.Systemdictionaryitem" column="incomeGrade_id" select="com.demo.p2p.base.mapper.SystemdictionaryitemMapper.selectByPrimaryKey" />
+	<association property="marriage" javaType="com.demo.p2p.base.pojo.Systemdictionaryitem" column="marriage_id" select="com.demo.p2p.base.mapper.SystemdictionaryitemMapper.selectByPrimaryKey" />
+	<association property="kidcount" javaType="com.demo.p2p.base.pojo.Systemdictionaryitem" column="kidCount_id" select="com.demo.p2p.base.mapper.SystemdictionaryitemMapper.selectByPrimaryKey" />
+	<association property="educationbackground" javaType="com.demo.p2p.base.pojo.Systemdictionaryitem" column="educationBackground_id" select="com.demo.p2p.base.mapper.SystemdictionaryitemMapper.selectByPrimaryKey" />
+	<association property="housecondition" javaType="com.demo.p2p.base.pojo.Systemdictionaryitem" column="houseCondition_id" select="com.demo.p2p.base.mapper.SystemdictionaryitemMapper.selectByPrimaryKey" />
+
+      
+   </resultMap>
   
   <insert id="insert">
-    insert into `userinfo` (id,version, bitState, realname,idnumber, phonenumber, incomegrade_id,email,authscore,realauthId,
+    insert into `userinfo` (id,version, bitstate, realname,idnumber, phonenumber, incomegrade_id,email,authscore,realauthId,
       marriage_id, kidcount_id, educationbackground_id,housecondition_id)
     values (#{id},0, 0, #{realname,jdbcType=VARCHAR}, 
-      #{idnumber,jdbcType=VARCHAR}, #{phonenumber,jdbcType=VARCHAR}, #{incomegradeId,jdbcType=BIGINT},#{email},#{authscore},#{realauthid},
-      #{marriageId,jdbcType=BIGINT}, #{kidcountId,jdbcType=BIGINT}, #{educationbackgroundId,jdbcType=BIGINT}, 
-      #{houseconditionId,jdbcType=BIGINT})
+      #{idnumber,jdbcType=VARCHAR}, #{phonenumber,jdbcType=VARCHAR}, #{incomegrade.id,jdbcType=BIGINT},#{email},#{authscore},#{realauthid},
+      #{marriage.id,jdbcType=BIGINT}, #{kidcount.id,jdbcType=BIGINT}, #{educationbackground.id,jdbcType=BIGINT}, 
+      #{housecondition.id,jdbcType=BIGINT})
   </insert>
   
   <update id="updateByPrimaryKey">
     update `userinfo`
     set version = version+1,
-      bitState = #{bitState,jdbcType=BIGINT},
+      bitState = #{bitstate,jdbcType=BIGINT},
       realName = #{realName,jdbcType=VARCHAR},
       idNumber = #{idNumber,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       realAuthId = #{realauthid},
       authScore = #{authScore},
       phoneNumber = #{phoneNumber,jdbcType=VARCHAR},
-      incomeGrade_id = #{incomegradeId,jdbcType=BIGINT},
-      marriage_id = #{marriageId,jdbcType=BIGINT},
-      kidCount_id = #{kidcountId,jdbcType=BIGINT},
-      educationBackgroundId = #{educationbackground_id,jdbcType=BIGINT},
-      houseConditionIid = #{housecondition_id,jdbcType=BIGINT}
+      incomeGrade_id = #{incomegrade.id,jdbcType=BIGINT},
+      marriage_id = #{marriage.id,jdbcType=BIGINT},
+      kidCount_id = #{kidcount.id,jdbcType=BIGINT},
+      educationBackground_id = #{educationbackground.id,jdbcType=BIGINT},
+      houseCondition_id = #{housecondition.id,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT} AND version = #{version}
   </update>
   
   <sql id="base_column">
-  	id, version, bitState, realName, idNumber, phoneNumber, incomeGrade_id, marriage_id,email,authScore,realAuthId,
-    kidCount_id, educationBackground_id, houseCondition_id
+  	id, version, bitstate, realName, idnumber, phoneNumber, incomeGrade_id,email,authScore,realAuthId,
+     marriage_id,kidCount_id, educationBackground_id, houseCondition_id     
   </sql>
   
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap">
-    select <include refid="base_column" />
+  <select id="selectByPrimaryKey" resultMap="baseResultMap">
+    select <include refid="base_column"/>
     from `userinfo`
-    where id = #{id,jdbcType=BIGINT}
+    where id =#{id}
   </select>
-  
+ 
 </mapper>

@@ -1,6 +1,6 @@
 package com.demo.p2p.base.controller;
 
-import javax.servlet.http.HttpSession;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.demo.p2p.base.pojo.Logininfo;
 import com.demo.p2p.base.service.AccountService;
 import com.demo.p2p.base.service.UserinfoService;
+import com.demo.p2p.base.util.UserContext;
 
 /**
  * 
@@ -29,12 +30,17 @@ public class PersonalController {
 	private AccountService accountService;
 	
 	@RequestMapping("personal.do")
-	public String personalCenter(Model model,HttpSession session) {
-		//需要往model里面放前台所需要的信息
-		Logininfo logininfo = (Logininfo)session.getAttribute("user");
-		model.addAttribute("userinfo", userinfoService.get(logininfo.getId()));
-		System.out.println(userinfoService.get(logininfo.getId()));
-		model.addAttribute("account", accountService.get(logininfo.getId()));
+	public String personalCenter(Model model) {
+		//model里面放前台所需要的信息
+		Logininfo current = UserContext.getCurrent();
+		System.out.println(current);
+		System.out.println(current.getId());
+		
+		System.out.println(userinfoService.get(current.getId()).toString());
+		model.addAttribute("userinfo", userinfoService.get(current.getId()));
+		
+		System.out.println(accountService.get(current.getId()).toString());
+		model.addAttribute("account", accountService.get(current.getId()));
 		return "personal";
 	}
 }

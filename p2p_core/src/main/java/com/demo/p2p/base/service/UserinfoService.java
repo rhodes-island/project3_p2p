@@ -1,5 +1,6 @@
 package com.demo.p2p.base.service;
 
+
 import com.demo.p2p.base.pojo.Userinfo;
 
 /**
@@ -17,4 +18,5 @@ public interface UserinfoService {
 	void add(Userinfo userinfo);
 	
 	Userinfo get(Long id);
+	
 }

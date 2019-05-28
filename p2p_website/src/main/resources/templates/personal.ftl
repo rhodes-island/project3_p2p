@@ -36,8 +36,8 @@
 									<img class="icon" src="/images/ms.png" />
 								</div>
 								<div class="pull-left el-head">
-									<p>用户名：${user.username}</p>
-									<p>最后登录时间：2019.6.1 </p>
+									<p>用户名：${logininfo.username}</p>
+									<p>最后登录时间：2222-2-22 15:15:15 </p>
 								</div>
 								<div class="pull-left" style="text-align: center;width: 400px;margin:30px auto 0px auto;">
 									<a class="btn btn-primary btn-lg" href="/recharge.do">账户充值</a>

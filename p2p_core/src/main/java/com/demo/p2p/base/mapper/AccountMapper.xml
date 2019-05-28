@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.demo.p2p.base.mapper.AccountMapper">
-  <resultMap id="BaseResultMap" type="com.demo.p2p.base.pojo.Account">
+  <resultMap id="baseResultMap" type="com.demo.p2p.base.pojo.Account">
    
       <result column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
       <result column="tradepassword" javaType="java.lang.String" jdbcType="VARCHAR" />
@@ -43,14 +43,20 @@
     unReceivePrincipal, unReturnAmount, remainBorrowLimit
   </sql>
   
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" >
+  <select id="selectByPrimaryKey" resultMap="baseResultMap" >
     select <include refid="base_column" />
     from `account`
-    where id = #{id,jdbcType=BIGINT}
+    where id = #{0}
   </select>
   
-  <select id="selectAll" resultMap="BaseResultMap">
+  <select id="selectAll" resultMap="baseResultMap">
   	select <include refid="base_column" />
     from `account`
+  </select>
+  
+  <!-- getAccountById -->
+  <select id="getCurrent" resultType="com.demo.p2p.base.pojo.Account">
+  	select <include refid="base_column"/>
+  	from account where id=#{0}
   </select>
 </mapper>

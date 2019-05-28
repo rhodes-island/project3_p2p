@@ -1,6 +1,5 @@
 package com.demo.p2p.base.pojo;
 
-import java.math.BigDecimal;
 
 //数据字典明细
 public class Systemdictionaryitem {
@@ -10,114 +9,65 @@ public class Systemdictionaryitem {
 
     private String title;//字典主题
 
-    private String tvalue;//返回值类型
 
     private Byte sequence;//顺序
 
     private String intro;//介绍
 
-    private String standbyone;//备用字段1
+	public Systemdictionaryitem(Long id, Long parentid, String title, Byte sequence, String intro) {
+		super();
+		this.id = id;
+		this.parentid = parentid;
+		this.title = title;
+		this.sequence = sequence;
+		this.intro = intro;
+	}
 
-    private String standbytwo;//备用字段2
+	public Long getId() {
+		return id;
+	}
 
-    private Long standbythree;//备用字段3
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    private BigDecimal standbyfour;//备用字段4
+	public Long getParentid() {
+		return parentid;
+	}
 
-    public Systemdictionaryitem(Long id, Long parentid, String title, String tvalue, Byte sequence, String intro, String standbyone, String standbytwo, Long standbythree, BigDecimal standbyfour) {
-        this.id = id;
-        this.parentid = parentid;
-        this.title = title;
-        this.tvalue = tvalue;
-        this.sequence = sequence;
-        this.intro = intro;
-        this.standbyone = standbyone;
-        this.standbytwo = standbytwo;
-        this.standbythree = standbythree;
-        this.standbyfour = standbyfour;
-    }
+	public void setParentid(Long parentid) {
+		this.parentid = parentid;
+	}
 
-    public Systemdictionaryitem() {
-        super();
-    }
+	public String getTitle() {
+		return title;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Byte getSequence() {
+		return sequence;
+	}
 
-    public Long getParentid() {
-        return parentid;
-    }
+	public void setSequence(Byte sequence) {
+		this.sequence = sequence;
+	}
 
-    public void setParentid(Long parentid) {
-        this.parentid = parentid;
-    }
+	public String getIntro() {
+		return intro;
+	}
 
-    public String getTitle() {
-        return title;
-    }
+	public void setIntro(String intro) {
+		this.intro = intro;
+	}
 
-    public void setTitle(String title) {
-        this.title = title == null ? null : title.trim();
-    }
+	@Override
+	public String toString() {
+		return "Systemdictionaryitem [id=" + id + ", parentid=" + parentid + ", title=" + title + ", sequence="
+				+ sequence + ", intro=" + intro + "]";
+	}
 
-    public String getTvalue() {
-        return tvalue;
-    }
 
-    public void setTvalue(String tvalue) {
-        this.tvalue = tvalue == null ? null : tvalue.trim();
-    }
-
-    public Byte getSequence() {
-        return sequence;
-    }
-
-    public void setSequence(Byte sequence) {
-        this.sequence = sequence;
-    }
-
-    public String getIntro() {
-        return intro;
-    }
-
-    public void setIntro(String intro) {
-        this.intro = intro == null ? null : intro.trim();
-    }
-
-    public String getStandbyone() {
-        return standbyone;
-    }
-
-    public void setStandbyone(String standbyone) {
-        this.standbyone = standbyone == null ? null : standbyone.trim();
-    }
-
-    public String getStandbytwo() {
-        return standbytwo;
-    }
-
-    public void setStandbytwo(String standbytwo) {
-        this.standbytwo = standbytwo == null ? null : standbytwo.trim();
-    }
-
-    public Long getStandbythree() {
-        return standbythree;
-    }
-
-    public void setStandbythree(Long standbythree) {
-        this.standbythree = standbythree;
-    }
-
-    public BigDecimal getStandbyfour() {
-        return standbyfour;
-    }
-
-    public void setStandbyfour(BigDecimal standbyfour) {
-        this.standbyfour = standbyfour;
-    }
 }
