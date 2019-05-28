@@ -9,26 +9,28 @@
 		<script type="text/javascript" src="/js/plugins-override.js"></script>
 		<script type="text/javascript" src="/js/My97DatePicker/WdatePicker.js"></script>
 		<script type="text/javascript">
-		 	$(function(){
-		 		$(".beginDate,.endDate").click(function(){
-		 			WdatePicker();
-		 		})
-		 		$("#query").click(function(){
-		 			$("#currentPage").val(1); //重新查询的时候设置当前页为1
-		 			$("#searchForm").submit() ;
-		 		})
-		 		
-		 		$("#pagination").twbsPagination({
-		 			totalPages: ${pageResult.totalPage} ,
-		 			visiblePages : 10 , //表示页面上面最多可以显示几页 
-		 			startPage: ${pageResult.currentPage},
-		 			onPageClick:function(eventm,page){
-		 				$("#currentPage").val(page); 
-			 			$("#searchForm").submit() ; 
-		 			}
-		 		})
-		 	});
-		
+			$(function(){
+				$(".beginDate,.endDate").click(function(){
+					WdatePicker();
+				});
+				
+				//注册查询按钮事件
+				$("#query").click(function(){
+					$("#currentPage").val(1);
+					$("#searchForm").submit();
+				});
+				
+				//分页
+				$("#pagination").twbsPagination({
+					totalPages:${pageResult.totalPage},
+					visiblePages:5,
+					startPage:${pageResult.currentPage},
+					onPageClick:function(event,page){
+						$("#currentPage").val(page);
+						$("#searchForm").submit();
+					}
+				});
+			});
 		</script>
 	</head>
 	<body>
@@ -36,7 +38,7 @@
 		<!-- 网页顶部导航 -->
 		<#include "common/head-tpl.ftl" />
 		<!-- 网页导航 -->
-		<#assign currentNav="personal"/>
+		<#assign currentNav="personal" />
 		<#include "common/navbar-tpl.ftl" />
 		
 		<div class="container">
@@ -66,7 +68,7 @@
 						    	<option value="1">登录成功</option>
 						    </select>
 						    <script type="text/javascript">
-						    	$("#state option[value=${qo.state}]").attr("selected" , true);
+						    	$("#state option[value=${qo.state}]").attr("selected",true);
 						    </script>
 						</div>
 						<div class="form-group">
@@ -88,16 +90,16 @@
 								</tr>
 							</thead>
 							<tbody>
-								<#list pageResult.listData as item >
+								<#list pageResult.listData as item>
 									<tr>
-										<td>${item.userName}</td>
-										<td>${item.loginTime?string("yyyy-MM-dd HH:mm:ss")}</td>
+										<td>${item.username}</td>
+										<td>${item.logintime?string("yyyy-MM-dd HH:mm:ss")}</td>
 								        <td>${item.ip}</td>
-								        <td>${item.stateDisplay}</td>
+								        <td>${item.loginStateDisplay}</td>
 									</tr>
 								</#list>
 							</tbody>
-						</table> 	
+						</table>
 						<div style="text-align: center;">
 							<ul id="pagination" class="pagination"></ul>
 						</div>

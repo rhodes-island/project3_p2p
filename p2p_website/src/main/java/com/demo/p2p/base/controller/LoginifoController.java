@@ -58,11 +58,10 @@ public class LoginifoController {
 	public JSONResult login(String username,String password,String usertype,HttpServletRequest request) {
 		JSONResult json = new JSONResult();
 		// 有可能service抛出已经有这个用户的异常
-		try {
-			logininfoService.login(username,password,usertype,request);
-		} catch (RuntimeException re) {
+			Logininfo current = logininfoService.login(username,password,usertype,request.getRemoteAddr());
+			if(current ==null) {
 			json.setSuccess(false);
-			json.setMsg(re.getMessage());
+			json.setMsg("用户名或密码错误！");
 		}
 		return json;
 	}

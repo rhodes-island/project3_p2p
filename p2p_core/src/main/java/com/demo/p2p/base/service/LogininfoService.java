@@ -1,6 +1,5 @@
 package com.demo.p2p.base.service;
 
-import javax.servlet.http.HttpServletRequest;
 
 import com.demo.p2p.base.pojo.Logininfo;
 
@@ -21,7 +20,7 @@ public interface LogininfoService {
 
 	boolean checkUserName(String username);
 
-	void login(String username, String password,String usertype,HttpServletRequest request);
+	Logininfo login(String username, String password,String usertype,String request);
 	
 	
 	

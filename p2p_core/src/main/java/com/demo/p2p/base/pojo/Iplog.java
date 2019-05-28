@@ -1,14 +1,11 @@
 package com.demo.p2p.base.pojo;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 //ip日志表
-public class Iplog {
-	public static final byte STATE_SUCCESS = 1;
-	public static final byte STATE_FAIL = 0;
-	
-    private Long id;//ip日志表id
+public class Iplog extends BasePojo {
+	public static final byte STATE_SUCCESS = 1;//登录成功
+	public static final byte STATE_FAIL = 0;//登录失败
 
     private String ip;//ip地址
     
@@ -22,117 +19,62 @@ public class Iplog {
 
     private Byte logintype;//登陆类型
 
-    private String standbyone;//备用字段1
+	public String getIp() {
+		return ip;
+	}
 
-    private String standbytwo;//备用字段2
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
 
-    private Long standbythree;//备用字段3
+	public Date getLogintime() {
+		return logintime;
+	}
 
-    private BigDecimal standbyfour;//备用字段4
+	public void setLogintime(Date logintime) {
+		this.logintime = logintime;
+	}
 
-    public Iplog(Long id, String ip, Byte loginstate, String username, Long logininfoid, Byte logintype, Date logintime, String standbyone, String standbytwo, Long standbythree, BigDecimal standbyfour) {
-        this.id = id;
-        this.ip = ip;
-        this.loginstate = loginstate;
-        this.username = username;
-        this.logininfoid = logininfoid;
-        this.logintype = logintype;
-        this.logintime = logintime;
-        this.standbyone = standbyone;
-        this.standbytwo = standbytwo;
-        this.standbythree = standbythree;
-        this.standbyfour = standbyfour;
-    }
+	public String getUsername() {
+		return username;
+	}
 
-    public Iplog() {
-        super();
-    }
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public Byte getLoginstate() {
+		return loginstate;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setLoginstate(Byte loginstate) {
+		this.loginstate = loginstate;
+	}
 
-    public String getIp() {
-        return ip;
-    }
+	public Long getLogininfoid() {
+		return logininfoid;
+	}
 
-    public void setIp(String ip) {
-        this.ip = ip == null ? null : ip.trim();
-    }
+	public void setLogininfoid(Long logininfoid) {
+		this.logininfoid = logininfoid;
+	}
 
-    public Byte getLoginstate() {
-        return loginstate;
-    }
+	public Byte getLogintype() {
+		return logintype;
+	}
 
-    public void setLoginstate(Byte loginstate) {
-        this.loginstate = loginstate;
-    }
+	public void setLogintype(Byte logintype) {
+		this.logintype = logintype;
+	}
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
-    }
-
-    public Long getLogininfoid() {
-        return logininfoid;
-    }
-
-    public void setLogininfoid(Long logininfoid) {
-        this.logininfoid = logininfoid;
-    }
-
-    public Byte getLogintype() {
-        return logintype;
-    }
-
-    public void setLogintype(Byte logintype) {
-        this.logintype = logintype;
-    }
-
-    public Date getLogintime() {
-        return logintime;
-    }
-
-    public void setLogintime(Date logintime) {
-        this.logintime = logintime;
-    }
-
-    public String getStandbyone() {
-        return standbyone;
-    }
-
-    public void setStandbyone(String standbyone) {
-        this.standbyone = standbyone == null ? null : standbyone.trim();
-    }
-
-    public String getStandbytwo() {
-        return standbytwo;
-    }
-
-    public void setStandbytwo(String standbytwo) {
-        this.standbytwo = standbytwo == null ? null : standbytwo.trim();
-    }
-
-    public Long getStandbythree() {
-        return standbythree;
-    }
-
-    public void setStandbythree(Long standbythree) {
-        this.standbythree = standbythree;
-    }
-
-    public BigDecimal getStandbyfour() {
-        return standbyfour;
-    }
-
-    public void setStandbyfour(BigDecimal standbyfour) {
-        this.standbyfour = standbyfour;
-    }
+	@Override
+	public String toString() {
+		return "Iplog [ip=" + ip + ", logintime=" + logintime + ", username=" + username + ", loginstate=" + loginstate
+				+ ", logininfoid=" + logininfoid + ", logintype=" + logintype + ", id=" + id + "]";
+	}
+    
+	//返回状态的用户名
+	public String getLoginStateDisplay() {
+		return loginstate==STATE_SUCCESS?"登陆成功":"登陆失败";
+	}
 }

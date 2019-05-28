@@ -33,14 +33,9 @@ public class PersonalController {
 	public String personalCenter(Model model) {
 		//model里面放前台所需要的信息
 		Logininfo current = UserContext.getCurrent();
-		System.out.println(current);
-		System.out.println(current.getId());
-		
-		System.out.println(userinfoService.get(current.getId()).toString());
 		model.addAttribute("userinfo", userinfoService.get(current.getId()));
-		
-		System.out.println(accountService.get(current.getId()).toString());
 		model.addAttribute("account", accountService.get(current.getId()));
 		return "personal";
 	}
+	
 }

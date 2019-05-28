@@ -2,18 +2,19 @@ package com.demo.p2p.base.service.impl;
 
 import java.util.Date;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.demo.p2p.base.mapper.IplogMapper;
 import com.demo.p2p.base.mapper.LogininfoMapper;
 import com.demo.p2p.base.pojo.Account;
 import com.demo.p2p.base.pojo.Iplog;
 import com.demo.p2p.base.pojo.Logininfo;
 import com.demo.p2p.base.pojo.Userinfo;
 import com.demo.p2p.base.service.AccountService;
+import com.demo.p2p.base.service.IplogService;
 import com.demo.p2p.base.service.LogininfoService;
 import com.demo.p2p.base.service.UserinfoService;
 import com.demo.p2p.base.util.MD5;
@@ -30,6 +31,9 @@ public class LogininfoServiceImpl implements LogininfoService {
 
 	@Autowired
 	private UserinfoService userinfoService;
+
+	@Autowired
+	private IplogMapper iplogMapper;
 
 	@Autowired
 	private HttpSession session;
@@ -53,7 +57,7 @@ public class LogininfoServiceImpl implements LogininfoService {
 			li.setUsertype(Logininfo.USER_CLIENT);
 			this.logininfoMapper.insert(li);
 			// 初始化账户信息和userinfo
-			//System.out.println(li.getId());
+			// System.out.println(li.getId());
 			try {
 				Account account = new Account();
 				account.setId(li.getId());
@@ -62,7 +66,7 @@ public class LogininfoServiceImpl implements LogininfoService {
 				e.printStackTrace();
 				throw e;
 			}
-			
+
 			try {
 				Userinfo userinfo = new Userinfo();
 				userinfo.setId(li.getId());
@@ -89,36 +93,35 @@ public class LogininfoServiceImpl implements LogininfoService {
 	}
 
 	@Override
-	public void login(String username, String password, String usertype,HttpServletRequest request) {
-		// 首先判断用户名或密码是否为空
-		try {
-			if (username.trim().equals("") || password.trim().equals("")) {
-				throw new RuntimeException("用户或密码错误");
-			}
-			//进行日志的记录
-			/*Iplog iplog = new Iplog();
-			iplog.setIp(request.getRemoteAddr());
-			iplog.setUsername(username);
-			iplog.setLogintime(new Date());*/
-			// 数据库进行对比
-			Logininfo logininfo = this.logininfoMapper.login(username, MD5.encode(password), usertype);
-			// 如果不等于空，将用户的信息存储到session里面
-			// 否则，抛出异常
-			
-			if (logininfo != null) {
-				// 将用户的信息存储到session里面
-				session.setAttribute(UserContext.USER_IN_SESSION, logininfo);
-				//登陆成功
-				//iplog.setLoginstate(Iplog.STATE_SUCCESS);
-			} else {
-				// 抛出异常如果用户不存在
-				throw new RuntimeException("用户或密码错误！");
-				
-			}
-		} catch (Exception e) {
-			
-			throw new RuntimeException("用户或密码错误!");
+	public Logininfo login(String username, String password, String usertype, String ip) {
+		/*// 首先判断用户名或密码是否为空
+		if (username.trim().equals("") || password.trim().equals("")) {
+			throw new RuntimeException("用户或密码错误");
+		}*/
+		// 进行日志的记录
+		Iplog iplog = new Iplog();
+		iplog.setIp(ip);
+		iplog.setLogintime(new Date());
+		iplog.setUsername(username);
+		// 数据库进行对比
+		Logininfo logininfo = this.logininfoMapper.login(username, MD5.encode(password), usertype);
+
+		// 如果不等于空:登陆成功，将用户的信息存储到session里面
+		// 否则，抛出异常
+		if (logininfo != null) {
+			// 把用户的信息放到UserContext里面管理
+			UserContext.putCurrent(logininfo);
+			// 将用户的信息存储到session里面
+			iplog.setLoginstate(Iplog.STATE_SUCCESS);
+			session.setAttribute(UserContext.USER_IN_SESSION, logininfo);
+
+			// iplog.setLoginstate(Iplog.STATE_SUCCESS);
+		} else {
+			iplog.setLoginstate(Iplog.STATE_FAIL);
 		}
+
+		iplogMapper.insert(iplog);
+		return logininfo;
 	}
 
 }
