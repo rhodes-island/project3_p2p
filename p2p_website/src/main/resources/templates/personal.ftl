@@ -7,9 +7,62 @@
 		<#include "common/links-tpl.ftl" />
 		<script type="text/javascript" src="/js/plugins/jquery.form.js"></script>
 		<link type="text/css" rel="stylesheet" href="/css/account.css" />
-		
 		<script type="text/javascript">
-			
+			$(function(){
+				if($("#showBindPhoneModal").size()>0){
+					//点击立即绑定，弹出模式窗口
+					$("#showBindPhoneModal").click(function(){
+						$("#bindPhoneModal").modal("show");
+					});
+					//点击发送验证码
+					$("#sendVerifyCode").click(function(){
+						var _this = $(this);
+						//只要点击就把这个按钮
+						_this.attr("disable",true);
+						//1.先发送一个ajax请求
+						$.ajax({
+							url:"/sendVerifyCode.do",
+							dataType:"json",
+							type:"POST",
+							data:{phoneNumber:$("#phoneNumber").val()},
+							success:function(data){
+								if(data.success){
+									//进入倒计时
+									var sec= 90;
+									var timer = window.setInterval(function(){
+										sec--;
+										if(sec>0){
+											_this.text(sec+"秒重新发送");
+										}else{
+											//去掉定时器
+											window.clearInterval(timer);
+											//修改文字
+											_this.text("重新发送验证码");
+											_this.attr("disable",false);
+										}
+									},1000);
+								}else{
+									$.messager.popup(data.msg);
+									_this.attr("disable",false);
+								}
+							}
+						});
+						//2.如果请求失败给提示
+						//3.如果请求成功
+						//给提交绑定窗口添加事件
+						$("#bindPhoneForm").ajaxForm(function(data){
+							if(data.success){
+								window.location.reload();
+							}else{
+								$.messager.popup(data.msg);
+							}
+						});
+						$("#bindPhone").click(function(){
+							$("#bindPhoneForm").submit();
+						});
+					});
+				};
+			});
 		</script>
 	</head>
 	<body>
@@ -93,7 +146,17 @@
 											</div>
 											<div class="el-accoun-auth-right">
 												<h5>手机认证</h5>
-																							
+												<#if userinfo.isBindPhone>
+												<p>
+													已认证
+													<a href="#">查看</a>
+												</p>
+												<#else>	
+												<p>
+													未认证
+													<a href="javascript:;" id="showBindPhoneModal">立即绑定</a>
+												</p>
+												</#if>										
 											</div>
 											<div class="clearfix"></div>
 											<p class="info">可以收到系统操作信息,并增加使用安全性</p>
@@ -137,7 +200,39 @@
 				</div>
 			</div>
 		</div>		
-		
+		<#if !userinfo.isBindPhone>
+		<div class="modal fade" id="bindPhoneModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<h4 class="modal-title" id="exampleModalLabel">绑定手机</h4>
+		      </div>
+		      <div class="modal-body">
+				<form class="form-horizontal" id="bindPhoneForm" method="post" action="/bindPhone.do">
+					<div class="form-group">
+						    <label for="phoneNumber" class="col-sm-2 control-label">手机号:</label>
+						    <div class="col-sm-4">
+						      <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" />
+						      <button id="sendVerifyCode" class="btn btn-primary" type="button" autocomplate="off">发送验证码</button>
+						    </div>
+						</div>
+						<div class="form-group">
+						    <label for="verifyCode" class="col-sm-2 control-label">验证码:</label>
+						    <div class="col-sm-4">
+						      <input type="text" class="form-control" id="verifyCode" name="verifyCode" />
+						    </div>
+						</div>
+				</form>
+		      </div>
+		      <div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-primary" id="bindPhone">保存</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		</#if>
 		
 		
 		

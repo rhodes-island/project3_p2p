@@ -31,5 +31,10 @@ public class VerifyCodeVO {
 	public void setLastSendTime(Date lastSendTime) {
 		this.lastSendTime = lastSendTime;
 	}
+	@Override
+	public String toString() {
+		return "VerifyCodeVO [verifyCode=" + verifyCode + ", phoneNumber=" + phoneNumber + ", lastSendTime="
+				+ lastSendTime + "]";
+	}
 	
 }

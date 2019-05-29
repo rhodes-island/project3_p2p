@@ -16,7 +16,7 @@ public class IplogQueryObject extends QueryObject {
 	private Date endDate;
 
 	private int state = -1;
-	private int userType = -1 ;
+	private int usertype = -1 ;
 	
 	private String username;
 	
@@ -27,10 +27,10 @@ public class IplogQueryObject extends QueryObject {
 		this.state = state;
 	}
 	public int getUserType() {
-		return userType;
+		return usertype;
 	}
 	public void setUserType(int userType) {
-		this.userType = userType;
+		this.usertype = userType;
 	}
 	public Date getBeginDate() {
 		return beginDate;
@@ -39,6 +39,15 @@ public class IplogQueryObject extends QueryObject {
 		this.username = username;
 	}
 	
+	@Override
+	public String toString() {
+		return "IplogQueryObject [beginDate=" + beginDate + ", endDate=" + endDate + ", state=" + state + ", userType="
+				+ usertype + ", username=" + username + ", getState()=" + getState() + ", getUserType()="
+				+ getUserType() + ", getBeginDate()=" + getBeginDate() + ", getEndDate()=" + getEndDate()
+				+ ", getUsername()=" + getUsername() + ", getStart()=" + getStart() + ", getCurrentPage()="
+				+ getCurrentPage() + ", getPageSize()=" + getPageSize() + ", getClass()=" + getClass() + ", hashCode()="
+				+ hashCode() + ", toString()=" + super.toString() + "]";
+	}
 	//spring日期的注入必须要给格式
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	public void setBeginDate(Date beginDate){

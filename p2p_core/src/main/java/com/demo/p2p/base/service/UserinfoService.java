@@ -19,4 +19,7 @@ public interface UserinfoService {
 	
 	Userinfo get(Long id);
 	
+	//绑定手机号
+	void bindPhone(String phoneNumber, String sendVerifyCode);
+	
 }

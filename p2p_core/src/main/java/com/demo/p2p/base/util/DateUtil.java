@@ -23,6 +23,7 @@ public class DateUtil {
 	 * @return
 	 */
 	public static long secondsBetween(Date d1, Date d2) {
+		//绝对值
 		return Math.abs((d1.getTime() - d2.getTime()) / 1000);
 	}
 }

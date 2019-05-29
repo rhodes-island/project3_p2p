@@ -4,6 +4,7 @@ package com.demo.p2p.base.util;
  * 用户状态类，记录用户在平台使用系统中所有的状态。
  * 
  * @author Administrator
+ * <<表时移动位数
  */
 public class BitStatesUtils {
 	public final static Long OP_BIND_PHONE = 1L << 0; // 用户绑定手机状态码

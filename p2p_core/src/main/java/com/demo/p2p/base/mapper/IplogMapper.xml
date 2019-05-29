@@ -4,21 +4,21 @@
   <resultMap id="BaseResultMap" type="com.demo.p2p.base.pojo.Iplog">
       <result column="id" property="id" javaType="java.lang.Long" jdbcType="BIGINT" />
       <result column="ip" property="ip" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <result column="loginState" property="loginstate" javaType="java.lang.Byte" jdbcType="TINYINT" />
+      <result column="state" property="state" javaType="java.lang.Byte" jdbcType="TINYINT" />
       <result column="username" property="username" javaType="java.lang.String" jdbcType="VARCHAR" />
       <result column="loginTime" property="logintime" javaType="java.util.Date" jdbcType="TIMESTAMP" />
       <result column="loginInfoId" property="logininfoid" javaType="java.lang.Long" jdbcType="BIGINT" />
-      <result column="usertype" property="usertype"/>
+      <result column="usertype" property="usertype" javaType="java.lang.Integer" jdbcType="INTEGER"/>
   </resultMap>
    
   <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-    insert into `iplog` (ip, loginstate, userName, loginTime,logininfoid,usertype)
-    values (#{ip,jdbcType=VARCHAR}, #{loginstate,jdbcType=TINYINT}, #{username,jdbcType=VARCHAR}, 
+    insert into `iplog` (ip, state, userName, loginTime,logininfoid,usertype)
+    values (#{ip,jdbcType=VARCHAR}, #{state,jdbcType=TINYINT}, #{username,jdbcType=VARCHAR}, 
       #{logintime,jdbcType=TIMESTAMP},#{logininfoid},#{usertype})
   </insert>
   
   <sql id="base_column">
-  	id, ip, loginState, userName, loginTime,logininfo,usertype
+  	id, ip, state, userName, loginTime,logininfoid,usertype
   </sql>
   <sql id="base_where">
   	<where>
@@ -31,10 +31,13 @@
   			AND loginTime &lt;= #{endDate}
   		</if>
   		<if test="state>-1">
-  			AND loginstate = #{state}
+  			AND state = #{state}
   		</if>
   		<if test="username!=null">
   			AND username = #{username}
+  		</if>
+  		<if test="usertype>-1">
+  			AND usertype = #{usertype}
   		</if>
   	</where>
   </sql>

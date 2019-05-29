@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.demo.p2p.base.query.IplogQueryObject;
 import com.demo.p2p.base.service.IplogService;
+import com.demo.p2p.base.util.RequireLogin;
+import com.demo.p2p.base.util.UserContext;
 
 /**
  * 
@@ -32,8 +34,11 @@ public class IplogController {
 	
 	//个人用户登录列表
 	@RequestMapping("ipLog.do")
+	@RequireLogin
 	//@ModelAttribute模型自动加入到model里面不需要手动添加
 	public String iplogList(@ModelAttribute("qo")IplogQueryObject qo,Model model) {
+		//给这个方法里面赋值：对应的用户名
+		qo.setUsername(UserContext.getCurrent().getUsername());
 		model.addAttribute("pageResult", this.iplogService.query(qo));
 		return "iplog_list";
 	}

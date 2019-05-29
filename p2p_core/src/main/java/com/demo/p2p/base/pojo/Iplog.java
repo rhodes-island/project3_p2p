@@ -4,20 +4,20 @@ import java.util.Date;
 
 //ip日志表
 public class Iplog extends BasePojo {
-	public static final byte STATE_SUCCESS = 1;//登录成功
-	public static final byte STATE_FAIL = 0;//登录失败
+	public static final byte STATE_SUCCESS = 1;// 登录成功
+	public static final byte STATE_FAIL = 0;// 登录失败
 
-    private String ip;//ip地址
-    
-    private Date logintime;//登陆时间
+	private String ip;// ip地址
+
+	private Date logintime;// 登陆时间
 
 	private String username;// 用户名
-	
-    private Byte loginstate;//登录状态
 
-    private Long logininfoid;//登录信息id
-    
-    private int usertype;//用户类型
+	private Byte state;// 登录状态
+
+	private Long logininfoid;// 登录信息id
+
+	private int usertype;// 用户类型
 
 	public String getIp() {
 		return ip;
@@ -43,12 +43,12 @@ public class Iplog extends BasePojo {
 		this.username = username;
 	}
 
-	public Byte getLoginstate() {
-		return loginstate;
+	public Byte getState() {
+		return state;
 	}
 
-	public void setLoginstate(Byte loginstate) {
-		this.loginstate = loginstate;
+	public void setState(Byte state) {
+		this.state = state;
 	}
 
 	public Long getLogininfoid() {
@@ -67,20 +67,18 @@ public class Iplog extends BasePojo {
 		this.usertype = usertype;
 	}
 
-    
-	
 	@Override
 	public String toString() {
-		return "Iplog [ip=" + ip + ", logintime=" + logintime + ", username=" + username + ", loginstate=" + loginstate
+		return "Iplog [ip=" + ip + ", logintime=" + logintime + ", username=" + username + ", state=" + state
 				+ ", logininfoid=" + logininfoid + ", usertype=" + usertype + "]";
 	}
 
-	//返回状态的用户名
+	// 返回状态的用户名
 	public String getLoginStateDisplay() {
-		return loginstate==STATE_SUCCESS?"登陆成功":"登陆失败";
+		return state == STATE_SUCCESS ? "登陆成功" : "登陆失败";
 	}
-	
+
 	public String getUserTypeDisplay() {
-		return usertype==Logininfo.USER_CLIENT?"前端用户":"后台用户";
+		return usertype == Logininfo.USER_CLIENT ? "前端用户" : "后台用户";
 	}
 }

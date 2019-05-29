@@ -136,4 +136,6 @@ public class BidConst {
 	public final static int PAYMENT_STATE_NORMAL = 0; // 正常待还
 	public final static int PAYMENT_STATE_DONE = 1; // 已还
 	public final static int PAYMENT_STATE_OVERDUE = 2; // 逾期
+	
+	/** =========秒滴参数=============== */
 }

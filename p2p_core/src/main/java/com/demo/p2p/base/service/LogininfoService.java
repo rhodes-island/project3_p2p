@@ -21,6 +21,8 @@ public interface LogininfoService {
 	boolean checkUserName(String username);
 
 	Logininfo login(String username, String password,int usertype,String request);
+
+	void initAdmin();
 	
 	
 	

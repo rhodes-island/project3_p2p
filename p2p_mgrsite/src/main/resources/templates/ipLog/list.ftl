@@ -99,10 +99,10 @@
 						<tbody id="tbody">
 							<#list pageResult.listData as data>
 							<tr>
-								<td>${data.userName}</a></td>
-								<td>${data.loginTime?string("yyyy-MM-dd HH:mm:SS")}</td>
+								<td>${data.username}</a></td>
+								<td>${data.logintime?string("yyyy-MM-dd HH:mm:SS")}</td>
 						        <td>${data.ip}</td>
-						        <td>${data.stateDisplay}</td>
+						        <td>${data.loginStateDisplay}</td>
 						        <td>${data.userTypeDisplay}</td>
 							</tr>
 							</#list>

@@ -6,7 +6,6 @@ import com.demo.p2p.base.pojo.Iplog;
 import com.demo.p2p.base.query.IplogQueryObject;
 
 public interface IplogMapper {
-	//登录记录的删除：
 	int insert(Iplog iplog);
 	
 	

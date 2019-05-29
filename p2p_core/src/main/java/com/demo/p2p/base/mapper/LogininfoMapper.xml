@@ -50,7 +50,7 @@
   	WHERE username = #{username} AND password = #{password} AND usertype = #{usertype}
   </select>
   
-  <select id="countByusertype" resultType="int">
-  	SELECT count(id) FROM logininfo WHERE usertype = #{usertype}
+  <select id="countByUserType" resultType="int">
+  	SELECT count(0) FROM logininfo WHERE usertype = #{usertype}
   </select>
 </mapper>

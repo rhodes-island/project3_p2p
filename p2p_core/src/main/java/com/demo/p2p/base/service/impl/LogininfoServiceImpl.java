@@ -17,6 +17,7 @@ import com.demo.p2p.base.service.AccountService;
 import com.demo.p2p.base.service.IplogService;
 import com.demo.p2p.base.service.LogininfoService;
 import com.demo.p2p.base.service.UserinfoService;
+import com.demo.p2p.base.util.BidConst;
 import com.demo.p2p.base.util.MD5;
 import com.demo.p2p.base.util.UserContext;
 
@@ -66,7 +67,6 @@ public class LogininfoServiceImpl implements LogininfoService {
 				e.printStackTrace();
 				throw e;
 			}
-
 			try {
 				Userinfo userinfo = new Userinfo();
 				userinfo.setId(li.getId());
@@ -104,25 +104,44 @@ public class LogininfoServiceImpl implements LogininfoService {
 		iplog.setLogintime(new Date());
 		iplog.setUsername(username);
 		iplog.setUsertype(usertype);
+		
 		// 数据库进行对比
 		Logininfo logininfo = this.logininfoMapper.login(username, MD5.encode(password),usertype);
-
 		// 如果不等于空:登陆成功，将用户的信息存储到session里面
 		// 否则，抛出异常
 		if (logininfo != null) {
 			// 把用户的信息放到UserContext里面管理
 			UserContext.putCurrent(logininfo);
 			// 将用户的信息存储到session里面
-			iplog.setLoginstate(Iplog.STATE_SUCCESS);
+			iplog.setState(Iplog.STATE_SUCCESS);
 			session.setAttribute(UserContext.USER_IN_SESSION, logininfo);
-
 			// iplog.setLoginstate(Iplog.STATE_SUCCESS);
 		} else {
-			iplog.setLoginstate(Iplog.STATE_FAIL);
+			iplog.setState(Iplog.STATE_FAIL);
 		}
-
 		iplogMapper.insert(iplog);
 		return logininfo;
+	}
+	
+	/**
+	 * <p>Title: initAdmin</p>   
+	 * <p>Description:初始化第一个超级管理员 </p>      
+	 * @see com.demo.p2p.base.service.LogininfoService#initAdmin()
+	 */
+	@Override
+	public void initAdmin() {
+		//查询是否有管理员
+		int count = logininfoMapper.countByUserType(Logininfo.USER_MANAGER);
+		//如果没有就创建一个管理员
+		if(count == 0) {
+			Logininfo logininfo = new Logininfo();
+			logininfo.setUsername(BidConst.DEFAULT_ADMIN_NAME);
+			logininfo.setPassword(MD5.encode(BidConst.DEFAULT_ADMIN_PASSWORD));
+			logininfo.setState(Logininfo.STATE_NORMAL);
+			logininfo.setUsertype(Logininfo.USER_MANAGER);
+			this.logininfoMapper.insert(logininfo);
+		}
+		//有就不管
 	}
 
 }
