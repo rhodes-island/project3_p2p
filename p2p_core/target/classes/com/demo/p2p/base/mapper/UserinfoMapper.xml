@@ -10,12 +10,7 @@
 	 <result property="idnumber" column="idnumber" javaType="java.lang.String" jdbcType="VARCHAR" />
 	 <result property="phonenumber" column="phonenumber" javaType="java.lang.String" jdbcType="VARCHAR" />
 	 <result property="email" column="email" javaType="java.lang.String" jdbcType="VARCHAR" />
-	 <result property="standbyone" column="standbyone" javaType="java.lang.String" jdbcType="VARCHAR" />
-	 <result property="standbytwo" column="standbytwo" javaType="java.lang.String" jdbcType="VARCHAR" />
-	 <result property="standbythree" column="standbythree" javaType="java.lang.Long" jdbcType="BIGINT" />
-	 <result property="standbyfour" column="standbyfour" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
-	 <result property="authscore" column="authscore" javaType="java.lang.Integer" jdbcType="INTEGER" />
-	 <result property="realauthid" column="realauthid" javaType="java.lang.Long" jdbcType="BIGINT" />
+	 <result property="realAuthId" column="realAuthId" javaType="java.lang.Long" jdbcType="BIGINT" />
 	<!--  <result column="incomegrade_id" javaType="java.lang.Long" jdbcType="BIGINT" />
 	<result column="marriage_id" javaType="java.lang.Long" jdbcType="BIGINT" />
 	<result column="kidcount_id" javaType="java.lang.Long" jdbcType="BIGINT" />
@@ -31,10 +26,10 @@
    </resultMap>
   
   <insert id="insert">
-    insert into `userinfo` (id,version, bitstate, realname,idnumber, phonenumber, incomegrade_id,email,authscore,realauthId,
+    insert into `userinfo` (id,version, bitstate, realname,idnumber, phonenumber, incomegrade_id,email,authscore,realAuthId,
       marriage_id, kidcount_id, educationbackground_id,housecondition_id)
     values (#{id},0, 0, #{realname,jdbcType=VARCHAR}, 
-      #{idnumber,jdbcType=VARCHAR}, #{phonenumber,jdbcType=VARCHAR}, #{incomegrade.id,jdbcType=BIGINT},#{email},#{authscore},#{realauthid},
+      #{idnumber,jdbcType=VARCHAR}, #{phonenumber,jdbcType=VARCHAR}, #{incomegrade.id,jdbcType=BIGINT},#{email},#{authscore},#{realAuthId},
       #{marriage.id,jdbcType=BIGINT}, #{kidcount.id,jdbcType=BIGINT}, #{educationbackground.id,jdbcType=BIGINT}, 
       #{housecondition.id,jdbcType=BIGINT})
   </insert>
@@ -46,7 +41,7 @@
       realName = #{realname,jdbcType=VARCHAR},
       idNumber = #{idnumber,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
-      realAuthId = #{realauthid},
+      realAuthId = #{realAuthId},
       authScore = #{authscore},
       phoneNumber = #{phonenumber,jdbcType=VARCHAR},
       incomeGrade_id = #{incomegrade.id,jdbcType=BIGINT},

@@ -54,7 +54,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
-			<optional>true</optional> <!-- 这个需要为 true 热部署才有效 -->
+			<optional>true</optional> <!-- 这个需要为 true 热部署才有效 注意：依赖不会传递，该项目依赖devtools；之后依赖myboot项目的项目如果想要使用devtools，需要重新引入-->
 		</dependency>
 		<!-- Spring Boot缓存支持启动器 -->
 		<dependency>
@@ -87,5 +87,11 @@
 			<artifactId>fastjson</artifactId>
 			<version>1.2.7</version>
 		</dependency>
+		<!-- 官方也提供了对电子邮件协议封装的 Java 类库 -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+		<version>1.5.0-b01</version>
+</dependency>
 	</dependencies>
 </project>

@@ -8,22 +8,16 @@
 		<script type="text/javascript" src="/js/plugins/jquery.form.js"></script>
 		<script>
 			$(function(){
-			//提交表单
-			$("#submitBtn").click(function(){
-				$("#userInfoForm").ajaxSubmit({
-					success: function(data){
-						if(data.success){
-							$.messager.confirm("提示","资料保存成功",function(){
-								window.location.reload();
-							});
-						}else{
-							$.messager.popup(data.msg);
-						}
-					}
+				//因为按钮直接时submit所以不用再设置带点击提交
+				//ajax提交表单
+				$("#userInfoForm").ajaxForm(function(){
+					$.messager.confirm("提示","修改成功",function(){
+							window.location.reload();
+					});
 				});
-				 	return false;
 			});
-			});
+			
+			
 		</script>		
 	</head>
 	<body>
@@ -93,7 +87,7 @@
 									手机号码
 								</label>
 								<div class="col-sm-8">
-									<label style="width: 250px;" class="form-control">${(userinfo.phoneNumber)!''}</label>
+									<label style="width: 250px;" class="form-control">${(userinfo.phonenumber)!''}</label>
 								</div>
 							</div>
 							
@@ -103,10 +97,12 @@
 								</label>
 								<div class="col-sm-8">
 									<select class="form-control" id="educationBackground" name="educationBackground.id" style="width: 180px" autocomplate="off">
+										<!-- 遍历学历 -->
 										<#list educationBackgrounds as item>
 											<option value="${item.id}">${item.title}</option>
 										</#list>
 									</select>
+									<!-- 回写 -->
 									<script type="text/javascript">
 										$("#educationBackground option[value=${(userinfo.educationBackground.id)!-1}]").attr("selected",true);
 									</script>
@@ -119,6 +115,7 @@
 								</label>
 								<div class="col-sm-8">
 									<select class="form-control" id="incomeGrade" name="incomeGrade.id" style="width: 180px" autocomplate="off" >
+										<!-- 遍历月收入类型 -->
 										<#list incomeGrades as item>
 											<option value="${item.id}">${item.title}</option>
 										</#list>
@@ -135,6 +132,7 @@
 								</label>
 								<div class="col-sm-8">
 									<select class="form-control" id="marriage" name="marriage.id" style="width: 180px" autocomplate="off">
+										<!-- 遍历婚姻状况 -->
 										<#list marriages as item>
 											<option value="${item.id}">${item.title}</option>
 										</#list>
@@ -151,6 +149,7 @@
 								</label>
 								<div class="col-sm-8">
 									<select class="form-control" id="kidCount" name="kidCount.id" style="width: 180px" autocomplate="off">
+										<!-- 遍历子女情况 -->
 										<#list kidCounts as item>
 											<option value="${item.id}">${item.title}</option>
 										</#list>
@@ -167,6 +166,7 @@
 								</label>
 								<div class="col-sm-8">
 									<select class="form-control" id="houseCondition" name="houseCondition.id" style="width: 180px" autocomplate="off">
+										<!-- 遍历住房条件 -->
 										<#list houseConditions as item>
 											<option value="${item.id}">${item.title}</option>
 										</#list>

@@ -1,7 +1,6 @@
 package com.demo.p2p.base.service.impl;
 
 import java.util.Date;
-import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 import com.demo.p2p.base.util.GetMessageCode;
@@ -23,10 +22,11 @@ public class VerifyCodeServiceImpl implements IVerifyCodeService {
 			//正常发送短信
 			
 			//生成验证码；
-			String verifyCode =GetMessageCode.getCode(phoneNumber,3);
+			String verifyCode =GetMessageCode.getCode(phoneNumber,1);
+			System.out.println(verifyCode);
 				/*UUID.randomUUID().toString().substring(0, 4);*/
 			//发送短信
-			System.out.println("给手机发送验证码"+verifyCode);
+			
 			//把手机号码.验证码，发送时间装配到vo中并保存到session
 			vc = new VerifyCodeVO();
 			vc.setVerifyCode(verifyCode);
@@ -42,10 +42,6 @@ public class VerifyCodeServiceImpl implements IVerifyCodeService {
 	public boolean verify(String phoneNumber, String verifyCode) {
 		//得到VerifyCode里面的对象
 		VerifyCodeVO vc = UserContext.getCurrentVerifyCode();
-		System.out.println(vc.toString());
-		System.out.println( vc.getVerifyCode().equals(verifyCode));
-		System.out.println( vc.getPhoneNumber().equals(phoneNumber));
-		System.out.println(DateUtil.secondsBetween(vc.getLastSendTime(), new Date()) < BidConst.VERIFYCODE_VAILDATE_SECOND);
 		//分别验证是否为空，手机验证码，手机号码，验证码有效期
 		if(vc!=null 
 				&& vc.getVerifyCode().equalsIgnoreCase(verifyCode)

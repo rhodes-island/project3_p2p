@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.demo.p2p.base.mapper.SystemdictionaryitemMapper">
-  <resultMap id="BaseResultMap" type="com.demo.p2p.base.pojo.Systemdictionaryitem">
-      <result column="id" javaType="java.lang.Long" jdbcType="BIGINT" />
-      <result column="parentId" javaType="java.lang.Long" jdbcType="BIGINT" />
-      <result column="title" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <result column="sequence" javaType="java.lang.Byte" jdbcType="TINYINT" />
-      <result column="intro" javaType="java.lang.String" jdbcType="VARCHAR" />
+  <resultMap type="com.demo.p2p.base.pojo.Systemdictionaryitem" id="smallResultmap">
+      <result column="id" property="id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <result column="title" property="title" javaType="java.lang.String" jdbcType="VARCHAR" />
+  </resultMap>
+  <!-- 这里继承了上一个resultMap -->
+  <resultMap id="BaseResultMap" type="com.demo.p2p.base.pojo.Systemdictionaryitem" extends="smallResultmap">
+      <result column="parentId" property="parentId" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <result column="sequence" property="sequence" javaType="java.lang.Byte" jdbcType="TINYINT" />
+      <result column="intro" property="intro" javaType="java.lang.String" jdbcType="VARCHAR" />
   </resultMap>
     <insert id="insert" useGeneratedKeys="true" keyProperty="id" >
     insert into `systemdictionaryitem` (id,parentId, title, sequence,intro)
@@ -17,13 +20,12 @@
     update `systemdictionaryitem`
     set parentId = #{parentId,jdbcType=BIGINT},
       	title = #{title,jdbcType=VARCHAR},
-      	sequence = #{sequence,jdbcType=TINYINT},
-     	intro = #{intro,jdbcType=VARCHAR},
+      	sequence = #{sequence,jdbcType=TINYINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
   
   <sql id="base_column">
-  	id, parentId, title, sequence,intro
+  	id, parentId, title, sequence
   </sql>
   
   <select id="selectByPrimaryKey" resultMap="BaseResultMap">
@@ -32,4 +34,34 @@
     where id = #{id,jdbcType=BIGINT}
   </select>
   
+  <sql id="base_where">
+  	<where>
+  		<if test="parentId!=null">
+  			AND parentId = #{parentId}
+  		</if>
+  		<if test="keyword!=null">
+  			AND title LIKE concat('%',#{keyword},'%')
+  		</if>
+  	</where>
+  </sql>
+  
+  <select id="queryForCount" resultType="int">
+  	SELECT COUNT(0)
+  	FROM systemdictionaryitem
+  	 <include refid="base_where"/>
+  </select>
+  
+  <select id="query" resultMap="BaseResultMap">
+  	SELECT <include refid="base_column"/>
+  	FROM systemdictionaryitem
+  	<include refid="base_where"/>
+  	LIMIT #{start},#{pageSize}
+  </select>
+  
+  <select id="listByParentSn" resultMap="smallResultmap">
+  	SELECT item.id AS id,item.title AS title
+  	FROM systemdictionaryitem item join systemdictionary d ON item.parentId = d.id
+  	WHERE d.sn = #{sn}
+  	ORDER BY item.sequence ASC
+  </select>
 </mapper>

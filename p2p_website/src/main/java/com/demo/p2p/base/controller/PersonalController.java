@@ -42,11 +42,16 @@ public class PersonalController {
 		return "personal";
 	}
 	
+	/**
+	 * 
+	 * @Title: bindPhone   
+	 * @Description: TODO(绑定手机)   
+	 * @throws:
+	 */
 	@RequireLogin
 	@RequestMapping("bindPhone.do")
 	@ResponseBody
 	public JSONResult bindPhone(String phoneNumber,String verifyCode) {
-		System.out.println(phoneNumber+"PersonalController控制层"+ verifyCode);
 		JSONResult json = new JSONResult();
 		try {
 			this.userinfoService.bindPhone(phoneNumber,verifyCode);
@@ -57,4 +62,59 @@ public class PersonalController {
 		System.out.println(json);
 		return json;
 	} 
+	
+	/**
+	 * 
+	 * @Title: bindPhone   
+	 * @Description: TODO(发送绑定邮箱邮件)   
+	 * @throws:
+	 */
+	@RequireLogin
+	@RequestMapping("sendEmail.do")
+	@ResponseBody
+	public JSONResult sendEmail(String email) {
+		JSONResult json = new JSONResult();
+		try {
+			this.userinfoService.sendVerifyEmail(email);
+		} catch (RuntimeException re) {
+			json.setSuccess(false);
+			json.setMsg(re.getMessage());
+		}
+		System.out.println(json);
+		return json;
+	}
+	
+	
+	//执行邮箱的绑定
+	@RequestMapping("bindEmail.do")
+	public String bindEmail(String uuid,Model model) {
+		try {
+			this.userinfoService.bindEmail(uuid);
+			model.addAttribute("success", true);
+		} catch (RuntimeException re) {
+			model.addAttribute("success", true);
+			model.addAttribute("msg", re.getMessage());
+		}
+		return "checkmail_result";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

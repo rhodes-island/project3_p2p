@@ -18,6 +18,7 @@ import com.alibaba.fastjson.JSONObject;
  * @Description:发送验证码
  * @author:ヅ零碎de記憶ぷ
  * @Date 2018年7月4日 下午9:27:04 13197118637 lbh1008
+ *这里如果打印0000就是模板有问题
  */
 public class GetMessageCode {
 	private static final String QUERY_PATH = "https://api.miaodiyun.com/20150822/industrySMS/sendSMS";
@@ -31,15 +32,18 @@ public class GetMessageCode {
 	 * @param: @return
 	 * @return: String
 	 * @throws:
-	 */
+	 */  
+	/*public static void main(String[] args) {
+		System.out.println(getCode("13197118637",1));
+	}*/
 	public static String getCode(String phone, int type) {
 		String rod = smsCode();
 		String timestamp = getTimestamp();
 		String sig = getMD5(ACCOUNT_SID, AUTH_TOKEN, timestamp);
 		String tamp = null;
-		String tamp1 = "【ELOAN】您的验证码为：" + rod + "，您正在修改登录密码，请确认是本人操作。";
-		String tamp2 = "【ELOAN】您的验证码为：" + rod + "，请于{2}分钟内正确输入，如非本人操作，请忽略此短信。";
-		String tamp3 = "【ELOAN】您的验证码为：" + rod + "，请于{5}分钟内正确输入，如非本人操作，请忽略此短信。";
+		String tamp1 = "【ELOAN】您的验证码为" + rod + "，请于5分钟内正确输入，如非本人操作，请忽略此短信。";
+		String tamp2 = "【ELOAN】您的验证码为" + rod + "，请于2分钟内正确输入，如非本人操作，请忽略此短信。";
+		String tamp3 = "【ELOAN】您的验证码为" + rod + "，您正在修改登录密码，请确认是本人操作。";
 		// 增加一个模板的选项
 		switch (type) {
 		case 1:

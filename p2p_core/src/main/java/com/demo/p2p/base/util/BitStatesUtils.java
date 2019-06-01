@@ -4,7 +4,7 @@ package com.demo.p2p.base.util;
  * 用户状态类，记录用户在平台使用系统中所有的状态。
  * 
  * @author Administrator
- * <<表时移动位数
+ * <<表示时移动位数
  */
 public class BitStatesUtils {
 	public final static Long OP_BIND_PHONE = 1L << 0; // 用户绑定手机状态码
@@ -15,7 +15,6 @@ public class BitStatesUtils {
 	public final static Long OP_HAS_BIDREQUEST_PROCESS = 1L << 5;// 用户是否有一个借款正在处理流程当中
 	public final static Long OP_BIND_BANKINFO = 1L << 6;// 用户是否绑定银行卡
 	public final static Long OP_HAS_MONEYWITHDRAW_PROCESS = 1L << 7;// 用户是否有一个提现申请在处理中
-
 	/**
 	 * @param states
 	 *            所有状态值

@@ -48,7 +48,8 @@
 								<span class="glyphicon glyphicon-remove" style="color:red;"></span>
 							<#else>
 								材料认证分数达到${creditBorrowScore}分<span class="glyphicon glyphicon-ok" style="color:green;">
-							</span></#if>
+							</span>
+							</#if>
 						</li>
 						<li>视频认证
 							<#if !(userinfo.isVedioAuth)>

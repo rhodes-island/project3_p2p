@@ -5,7 +5,6 @@ import org.springframework.util.StringUtils;
 
 /**
  * 数据字典 字典明细 相关的高级查询
- * @author Linv999!
  *
  */
 public class SystemDictionaryQueryObject extends QueryObject {

@@ -9,7 +9,8 @@
     <result column="usertype" jdbcType="TINYINT" property="usertype" />
     <result column="admin" jdbcType="BIT" property="admin" />
   </resultMap>
-  
+  <!-- useGeneratedKeys 在执行添加记录之后可以获取到数据库自动生成的主键ID  -->
+  <!-- keyProperty 主要是在主键是自增的情况下，添加成功后可以直接使用主键值，其中keyProperty的值是对象的属性值不是数据库表中的字段名-->
   <insert id="insert" useGeneratedKeys="true" keyProperty="id" >
     insert into `logininfo` (username, password, state,usertype,admin)
     values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{state,jdbcType=TINYINT},#{usertype,jdbcType=TINYINT},#{admin,jdbcType=TINYINT})

@@ -27,7 +27,7 @@ public class RegisterController {
 		return "/WEB-INF/jsp/showLogininfo.jsp";
 	}
 
-	// 用于检查username的ajax
+	// 用于检查username的ajax的拦截
 	@RequestMapping("checkUserName.do")
 	@ResponseBody
 	public Boolean checkUserName(String username) {

@@ -1,59 +1,33 @@
 package com.demo.p2p.base.pojo;
 
-import java.math.BigDecimal;
 
 import com.demo.p2p.base.util.BitStatesUtils;
 
 //用户信息表
 public class Userinfo {
 	private Long id;// 用户信息表id
-
 	private Integer version;// 版本号
-
 	private Long bitstate;// 用户状态码
-
 	private String realname;// 真名
-
 	private String idnumber;// 身份证号码
-
 	private String phonenumber;// 电话号码
-
 	private Integer authscore;// 风控累计分数;
 	private String email;// 邮箱
+	private Long realAuthId;// 该用户对应的实名认证对象Id
+
 	private Systemdictionaryitem incomegrade; // 收入
 	private Systemdictionaryitem marriage; // 婚姻情况
 	private Systemdictionaryitem kidcount; // 子女情况
 	private Systemdictionaryitem educationbackground; // 学历
 	private Systemdictionaryitem housecondition; // 住房条件
-	/*
-	 * private Long incomegradeId;// 月收入
-	 * 
-	 * private Long marriageId;// 婚否
-	 * 
-	 * private Long kidcountId;// 子女情况id
-	 * 
-	 * private Long educationbackgroundId;// 学历情况id
-	 * 
-	 * private Long houseconditionId;// 住房条件id
-	 */
-	private Long realauthid;// 该用户对应的实名认证对象id
-
-	private String standbyone;// 备用字段1
-
-	private String standbytwo;// 备用字段2
-
-	private Long standbythree;// 备用字段3
-
-	private BigDecimal standbyfour;// 备用字段4
 
 	@Override
 	public String toString() {
 		return "Userinfo [id=" + id + ", version=" + version + ", bitstate=" + bitstate + ", realname=" + realname
 				+ ", idnumber=" + idnumber + ", phonenumber=" + phonenumber + ", authscore=" + authscore + ", email="
-				+ email + ", incomegrade=" + incomegrade + ", marriage=" + marriage + ", kidcount=" + kidcount
-				+ ", educationbackground=" + educationbackground + ", housecondition=" + housecondition
-				+ ", realauthid=" + realauthid + ", standbyone=" + standbyone + ", standbytwo=" + standbytwo
-				+ ", standbythree=" + standbythree + ", standbyfour=" + standbyfour + "]";
+				+ email + ", realAuthId=" + realAuthId + ", incomegrade=" + incomegrade + ", marriage=" + marriage
+				+ ", kidcount=" + kidcount + ", educationbackground=" + educationbackground + ", housecondition="
+				+ housecondition + "]";
 	}
 
 	public Long getId() {
@@ -160,44 +134,12 @@ public class Userinfo {
 		this.housecondition = housecondition;
 	}
 
-	public Long getRealauthid() {
-		return realauthid;
+	public Long getrealAuthId() {
+		return realAuthId;
 	}
 
-	public void setRealauthid(Long realauthid) {
-		this.realauthid = realauthid;
-	}
-
-	public String getStandbyone() {
-		return standbyone;
-	}
-
-	public void setStandbyone(String standbyone) {
-		this.standbyone = standbyone;
-	}
-
-	public String getStandbytwo() {
-		return standbytwo;
-	}
-
-	public void setStandbytwo(String standbytwo) {
-		this.standbytwo = standbytwo;
-	}
-
-	public Long getStandbythree() {
-		return standbythree;
-	}
-
-	public void setStandbythree(Long standbythree) {
-		this.standbythree = standbythree;
-	}
-
-	public BigDecimal getStandbyfour() {
-		return standbyfour;
-	}
-
-	public void setStandbyfour(BigDecimal standbyfour) {
-		this.standbyfour = standbyfour;
+	public void setrealAuthId(Long realAuthId) {
+		this.realAuthId = realAuthId;
 	}
 
 	/**

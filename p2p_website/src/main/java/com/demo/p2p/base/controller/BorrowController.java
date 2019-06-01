@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.demo.p2p.base.pojo.Logininfo;
+import com.demo.p2p.base.pojo.Userinfo;
 import com.demo.p2p.base.service.AccountService;
 import com.demo.p2p.base.service.UserinfoService;
 import com.demo.p2p.base.util.BidConst;
@@ -30,8 +31,12 @@ public class BorrowController {
 		} else {
 			//得到这个用户的Account信息
 			model.addAttribute("account", this.accountService.getCurrent());
+			System.out.println(this.accountService.getCurrent().toString());
 			//得到这个用户的Userinfo信息
 			model.addAttribute("userinfo", this.userinfoServce.get(current.getId()));
+			 Userinfo userinfo = this.userinfoServce.get(current.getId());
+			System.out.println( this.userinfoServce.get(current.getId()).toString());
+			System.out.println(userinfo.getIsBindPhone()+" "+userinfo.getIsBindEmail());
 			//UserInfo信息
 			model.addAttribute("creditBorrowScore", BidConst.BASE_BORROW_SCORE);
 			return "borrow";

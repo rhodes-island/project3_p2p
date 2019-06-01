@@ -26,4 +26,9 @@ public class DateUtil {
 		//绝对值
 		return Math.abs((d1.getTime() - d2.getTime()) / 1000);
 	}
+	
+	//两个时间的间隔天数
+	public static int daysBetweent(Date sendEmailTime, Date bindEmailTime) {
+		return (int)(bindEmailTime.getTime() - sendEmailTime.getTime()) / (1000*24*60*60);
+	}
 }

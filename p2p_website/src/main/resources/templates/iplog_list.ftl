@@ -23,7 +23,7 @@
 				//分页
 				$("#pagination").twbsPagination({
 					totalPages:${pageResult.totalPage},
-					visiblePages:90,
+					visiblePages:4,
 					startPage:${pageResult.currentPage},
 					onPageClick:function(event,page){
 						$("#currentPage").val(page);
